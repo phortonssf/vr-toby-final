@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar >
+    <ion-title align="center"> {{ testTitle }} Test </ion-title>
+    
+    <ion-buttons end>
+      <button ion-button>
+        Close
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <h2 align="center">  {{ currentQuestion + 1 }} of {{ questions.length  }}  </h2>
+</ion-header>
+
+<!--<ion-content >
+  <ion-scroll direction="xy" delegate-handle="zoom-pane" class="zoom-pane" min-zoom="1" scrollbar-x="false" scrollbar-y="false" overflow-scroll="false" style="height: 100%;"  *ngFor="let photo of photos; let i = index"  scrollX="true" scrollY="true" [zoom]="true" maxZoom="20">
+    <img [src]="photo.url"/>>
+  </ion-scroll>
+</ion-content>-->
+
+
+
+<ion-content>
+    <img (click)="imageZoom()" [src]="viewPic"/>
+    <!--<img *ngIf='imageIndex == 1' (click)="imageZoom()" [src]="viewPic"/>-->
+    <!--<img *ngIf='imageIndex == 2' (click)="imageZoom()" [src]="viewPic"/>-->
+</ion-content>
+
+<ion-footer>
+
+  <ion-grid>
+    <ion-row>
+
+      <ion-col *ngFor='let photo of photos; let i = index'>
+         <img (click)="selectImage(photo.url, i)" [src]="photo.url"/>
+      </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+
+        <ion-col>
+          <ion-buttons align="center">
+            <button  ion-button align="center" class="test-button" align="center" ion-button color="danger" (click)="nextPage(-1)">Previous</button>
+          </ion-buttons>
+        </ion-col>
+
+        <ion-col>
+          <ion-buttons   align="center" >
+            <button ion-button align="center" class='testbutton' ion-button color="secondary" (click)="nextPage(1)">Next</button>
+          </ion-buttons>
+        </ion-col>
+
+       </ion-row>
+      </ion-grid>
+   </ion-toolbar>
+</ion-footer>

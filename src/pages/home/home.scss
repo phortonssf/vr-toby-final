@@ -1,0 +1,22 @@
+page-home {
+    .card{
+        background-color: #a9b8d1;
+        border-radius: 5px 30px;
+    }
+    
+    .label {
+        text-align: center;
+    }
+    
+    img{
+      height: 100%;
+      margin: auto;
+      display: block;
+    }
+    
+    .item ion-thumbnail img{
+        min-width: 120px;
+        min-height: 120px;
+    }
+
+}

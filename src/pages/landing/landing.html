@@ -1,0 +1,27 @@
+
+
+<ion-content padding background-color="#b3c2db">
+  <h1 id="title" align="center"> VR-Toby </h1>
+  <!--Login Function-->
+<div class="form-wrapper">
+  <form #loginForm="ngForm" (ngSubmit)="signinForm(loginForm)" novalidate>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <!--[(ngModel)]="user.email" sameAs ng-model="user.email"-->
+      <ion-input name="email" type="email" placeholder="john@doe.com" [(ngModel)]="user.email" required></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input name="password" type="password" placeholder="********" [(ngModel)]="user.password" required></ion-input>
+    </ion-item>
+    <!--Login Button-->
+    <button ion-button type="submit" block='true'>
+      Log In
+    </button>
+  </form>
+  <!--To Register View Button-->
+  <button ion-button block="true" (click)="register()">Register</button>
+</div>
+
+</ion-content>

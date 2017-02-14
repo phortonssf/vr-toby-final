@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title align="center">VR-Toby</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logoutConfirm()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- <ion-card class="card" *ngFor="let test of tests" (click)="takeTest(test)">-->
+  <!--   <ion-card-header align="center">-->
+  <!--    {{ test.title }}-->
+  <!--  </ion-card-header>-->
+  <!--  <ion-card-content align="center">-->
+  <!--    {{ test.description }}-->
+  <!--  </ion-card-content>-->
+  <!--</ion-card>-->
+  
+  <ion-list>
+    <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
+      <ion-thumbnail>
+        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSd20d5uTTvOJ6kT7ANcGPb3iNnOcMfTDAtEVUrvTlOrRrzyTuE5w" [navPush]="pushPage">
+      </ion-thumbnail>
+      <h2>Level {{$index + 1}}</h2>
+      <h3>{{test.title}}</h3>
+      <h3>{{8}}/{{10}}</h3>
+    </ion-item>
+  </ion-list>
+ 
+</ion-content>

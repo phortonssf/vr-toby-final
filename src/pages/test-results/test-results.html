@@ -1,0 +1,34 @@
+
+<ion-header>
+
+  <ion-navbar  hideBackButton="true">
+    <ion-title align="center"> VR-Toby </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeTestResult()">
+       Close
+      </button>
+     </ion-buttons>
+  </ion-navbar>
+<h2 align="center"> Results For {{ testTitle}} </h2>
+<h3 align="center"> {{ correctNum }} of {{ testNum }}  </h3>
+</ion-header>
+
+
+<ion-content padding>
+ 
+     <ion-card *ngFor="let question of questions; let i = index">
+       <ion-card-header>
+         <h1 align="center"> Question Number {{ i + 1 }}</h1>
+      </ion-card-header>
+      <ion-card-content>
+          <div *ngIf="question.answer != question.answerGiven">
+	    <div [ngClass]="'right'"> {{ question.answer }} </div>
+              </div> 
+         <h3 align="center"> {{ question.answerGiven  }}  </h3>
+         <ion-icon  *ngIf="question.answerGiven == question.answer" name="thumbs-up"></ion-icon>
+         <ion-icon  *ngIf="question.answerGiven != question.answer" name="thumbs-down"></ion-icon>
+      </ion-card-content>
+    </ion-card>
+
+
+</ion-content>
