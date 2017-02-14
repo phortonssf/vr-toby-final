@@ -41,7 +41,7 @@ export class TestReviewPage {
     this.testId =  this._navP.get("testId");
     this.questions = this._navP.get("questions");
     this.testTitle = this._navP.get("testTitle");
-    this.currentQuestion = this._navP.get("clickedQuestion");
+    this.currentQuestion = this._navP.get("currentQuestion");
     //this.answers = this._navP.get("answers");
     
     //Local staorage
@@ -80,7 +80,7 @@ createPhotos(questionImages) {
 
 //Logs user out
 
-closeTest() {
+  closeTest() {
     let confirm = this.alertCtrl.create({
       title: 'Do you want to quit current test?',
      // message: 'Your progess will be saved and you can resume at a later time',
@@ -102,7 +102,16 @@ closeTest() {
     });
     confirm.present();
   }
-
+  
+  nextPage(num){
+    this.currentQuestion + num
+    this._nav.push(TestReviewPage, {
+      "testTitle": this.testTitle,
+      "questions": this.questions,
+      "currentQuestion": this.currentQuestion
+      
+    })
+  }
   /*On click from user on asnwer button updates answer if one already exists for 
   the user on this question or test or creates*/
   // selectAnswer(answerPicked){

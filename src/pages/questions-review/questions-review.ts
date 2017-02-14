@@ -48,7 +48,7 @@ reviewQuestion = function ( question, questionIndex ) {
   this._nav.push(TestReviewPage, {
     "testTitle": this.testTitle,
     "questions": this.questions,
-    "clickedQuestion": questionIndex
+    "currentQuestion": questionIndex
   })
 }
 

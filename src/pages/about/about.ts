@@ -22,9 +22,9 @@ export class AboutPage {
   {  
     this.userId = window.localStorage.getItem('userId');
     this.userToken = window.localStorage.getItem('userToken');
-      let completedTests = [];
+    let completedTests = [];
     this.completedTests = completedTests;
-    console.log("view did load ID: ", this.userId)
+
     this._restTests.getCompletedTests( this.userId, this.userToken ) 
       .map(res => res.json())
       .subscribe(res => {
@@ -47,31 +47,26 @@ export class AboutPage {
   }
   
   reviewTest(test){
-    console.log("testId", test)
-    console.log(this.userToken)
     this._restTests.getQuestions( test.testId, this.userToken )
     .map(res => res.json())
       .subscribe(res => {
         this.questions = res[0].questionIds
-        console.log("this is res: ", res[0].questionIds)
-        console.log(this.questions)
+        this._restTests.getUserAnswers( test.id, this.userToken, )
+          .map(res => res.json())
+          .subscribe(res => {
+            this._nav.push(QuestionsReviewPage, {
+              "questions": this.questions,
+              "answers": res,
+              "testTakenId": test.testId,
+              "testTitle": test.title
+            })
+          }, err => {
+            this.answersError()
+          })
       }, err => {
         this.answersError()
       })
-    console.log(this.userToken)
-    this._restTests.getUserAnswers( test.id, this.userToken, )
-    .map(res => res.json())
-      .subscribe(res => {
-        console.log('in res', this.questions)
-        this._nav.push(QuestionsReviewPage, {
-          "questions": this.questions,
-          "answers": res,
-          "testTakenId": test.testId,
-          "testTitle": test.title
-        })
-      }, err => {
-        this.answersError()
-      })
+    
   }
   
   //Alert for if error getting answers
