@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 //  Providers
 import { RestTests } from '../providers/rest-tests'; 
@@ -14,7 +15,7 @@ import { ZoomableImage } from 'ionic-gallery-modal';
 import { TestViewPage } from '../pages/test-view/test-view';
 import { LandingPage } from '../pages/landing/landing';
 import { SamplePage } from '../pages/sample/sample';
-import { AboutPage } from '../pages/about/about';
+import { ResultsPage } from '../pages/results/results';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { RegisterPage } from '../pages/register/register';
@@ -26,7 +27,7 @@ const injections = [
     MyApp,
     LandingPage,
     RegisterPage,
-    AboutPage,
+    ResultsPage,
     HomePage,
     TabsPage,
     GalleryModal,
@@ -40,7 +41,7 @@ const injections = [
     ]
 
 @NgModule({
-  declarations: injections,
+  declarations: [injections, ProgressBarComponent],
   imports: [
     IonicModule.forRoot(MyApp)
   ],

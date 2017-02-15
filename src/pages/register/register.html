@@ -18,7 +18,7 @@
 
 <ion-content padding>
       <!--Register Function--->
-  <form #registerData="ngForm" (ngSubmit)="registerForm(registerData)" novalidate>
+  <form id="register-form" #registerData="ngForm" (ngSubmit)="registerForm(registerData)" novalidate>
     
     <ion-item>
       <ion-label>FirstName</ion-label>
@@ -45,7 +45,7 @@
       <ion-input floating name="password" type="password"  [(ngModel)]="user.password" required></ion-input>
     </ion-item>
     <!--Register Button-->
-    <button ion-button type="submit" class="button-block">
+    <button ion-button type="submit" id="register-button"  class="button-block form-button">
       Register
     </button>
   </form>

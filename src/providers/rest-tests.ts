@@ -48,7 +48,7 @@ export class RestTests {
   
   getCompletedTests( id ,token ){
     return this.http.get(this.baseUrl + "AppUsers/" + 
-      id + "/testTakenIds?filter[include][answerIds]" + 
+      id + "/testTakenIds?filter[include][userAnswerIds]" + 
       "&access_token=" + token )
   }
   
@@ -70,8 +70,14 @@ export class RestTests {
   }
   
   getQuestions(testId, token ){
-    return this.http.get( this.baseUrl + "Tests?filter[include][questionIds]&filter[where][id]=" + testId + "&access_token=" + token)
+    return this.http.get( this.baseUrl + "Tests?filter[include][questionIds]&filter[where][id]=" + 
+    testId + "&access_token=" + token)
   }
 
+  // findUnfinishedTests(userId, token){
+  //   return  return this.http.get( this.baseUrl + "TestTaken?filter[where][userId]=" +
+  //     userId + "
+  // }
+  
   
 }

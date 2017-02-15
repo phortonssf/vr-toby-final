@@ -1,5 +1,12 @@
 page-test-results {
+    .wrong{
+        color: #d61717;
+    }
     .right{
-        color: #f442f4;
+        color: #61c942;
+    }
+    
+    .scroll-content{
+        height: 80%;
     }
 }

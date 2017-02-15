@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 //Pages
 import { TestReviewPage } from '../test-review/test-review';
+import { ResultsPage } from '../results/results';
 
 
 @Component({
@@ -12,21 +13,22 @@ import { TestReviewPage } from '../test-review/test-review';
 export class QuestionsReviewPage {
   answers: any[] = [];
   questions: any[] = [];
-  correctNum: number = 0;
+  totalCorrect: number = 0;
   totalQuestions: number = undefined;
   wrongNum: number = undefined;
-  testNum: number = 10;
+  //testNum: number = 10;
   testTakenId: string  = "";
   userToken: string = "";
   userId: string = "";
   testTitle: string = "";
   
-  constructor(public _nav: NavController, public _navP: NavParams) {
+  constructor(public _nav: NavController, public _navP: NavParams, public _alert: AlertController) {
     
     this.answers = this._navP.get("answers");
     this.testTitle = this._navP.get("testTitle");
     this.questions = this._navP.get("questions");
     this.testTakenId =  this._navP.get("testTakenId");
+    this.totalCorrect =  this._navP.get("totalCorrect");
     this.totalQuestions = this.questions.length;
     this.userToken = window.localStorage.getItem('userToken');
     this.userId = window.localStorage.getItem('userId');
@@ -43,16 +45,49 @@ export class QuestionsReviewPage {
       this.questions[i].imgArray = this.questions[i].imageIds.split(",")
     }
   }
-reviewQuestion = function ( question, questionIndex ) {
-  console.log("question", questionIndex)
-  this._nav.push(TestReviewPage, {
-    "testTitle": this.testTitle,
-    "questions": this.questions,
-    "currentQuestion": questionIndex
-  })
-}
+  reviewQuestion = function ( question, questionIndex ) {
+    console.log("question", questionIndex)
+    this._nav.push(TestReviewPage, {
+      "testTitle": this.testTitle,
+      "questions": this.questions,
+      "currentQuestion": questionIndex
+    })
+  }
+  
+  closeTestResult = function(){
+    this._nav.setRoot(ResultsPage)
+  }
+  
+   closeTestConfirm() {
+    let confirm = this._alert.create({
+      title: 'Are you sure you want to close test?',
+      //message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
+      buttons: [
+        {
+          text: 'Cancel',
+          class: 'cancel-btn',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Agree clicked');
+            this.closeTestResult()
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 
 }
+
+
+
+
+
 
 let gradeAnswers = function (questions, answers){
   console.log("answers", answers);

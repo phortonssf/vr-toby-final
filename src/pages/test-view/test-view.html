@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar hideBackButton>
-    <ion-title align="center"> {{ testTitle }} Test </ion-title>
+    <ion-title align="center"> {{ testTitle }} </ion-title>
     
     <ion-buttons end>
       <button ion-button (click)="closeTest()">
@@ -8,7 +8,9 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <h2 align="center">  {{ currentQuestion + 1 }} of {{ questions.length  }}  </h2>
+  <h5 align="center">  Case {{ currentQuestion + 1 }} of {{ questions.length  }}  </h5>
+  <p align="center"  margin-left="20px" margin-right="20px"> Tap on Image below to open full screen.</p>
+
 </ion-header>
 
 <!--<ion-content >
@@ -23,37 +25,43 @@
     <img (click)="imageZoom()" [src]="viewPic"/>
     <!--<img *ngIf='imageIndex == 1' (click)="imageZoom()" [src]="viewPic"/>-->
     <!--<img *ngIf='imageIndex == 2' (click)="imageZoom()" [src]="viewPic"/>-->
+  <p align="center"  margin-left="20px" margin-right="20px" margin-bottom="5px" > Mark below each image that looks enlarged.</p>
+  <ion-grid class="thumbnails">
+    <ion-row >
+      <ion-col width="33%" height="20%" *ngFor='let photo of photos; let i = index'>
+         <img (click)="selectImage(photo.url, i)" [src]="photo.url"/>
+
+              <ion-checkbox align="center" color="primaryx" checked="false"></ion-checkbox>
+            
+          </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
 </ion-content>
 
-<ion-footer>
 
-  <ion-grid>
-    <ion-row>
 
-      <ion-col *ngFor='let photo of photos; let i = index'>
-         <img (click)="selectImage(photo.url, i)" [src]="photo.url"/>
-      </ion-col>
-
-      </ion-row>
-    </ion-grid>
-
-  <ion-toolbar>
-    <ion-grid>
+<ion-footer id="test-footer">
+  <p align="center"  margin-left="20px" margin-right="20px" id="answer-info"> Select below if the overall case is Enlarged or Normal </p>
+   <ion-toolbar>
+    <!--<ion-grid >-->
       <ion-row>
 
         <ion-col>
           <ion-buttons align="center">
-            <button  ion-button align="center" class="test-button" align="center" ion-button color="danger" (click)="selectAnswer('Enlarged')">Enlarged</button>
+            <button  ion-button align="center" class="test-button" outline align="center"  color="primary" (click)="selectAnswer('Enlarged')">Enlarged</button>
           </ion-buttons>
         </ion-col>
 
         <ion-col>
           <ion-buttons   align="center" >
-            <button ion-button align="center" class='testbutton' ion-button color="secondary" (click)="selectAnswer('Normal')">Normal</button>
+            <button ion-button align="center" class='test-button' outline color="primary" (click)="selectAnswer('Normal')">Normal</button>
           </ion-buttons>
         </ion-col>
 
        </ion-row>
-      </ion-grid>
-   </ion-toolbar>
-</ion-footer>
+      <!--</ion-grid>-->
+      </ion-toolbar>
+      </ion-footer>
+
+

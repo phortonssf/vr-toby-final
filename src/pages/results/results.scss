@@ -1,0 +1,19 @@
+page-results {
+    
+    // .scroll-content {
+    //     background-color: map-get($colors, light);
+    // }
+    .card {
+        background:rgba(0,0,0,0.0);
+    }
+    
+    .chart {
+        height: 100px !important;
+        width: 100px !important;
+        color:  #af0c0c !important;
+    }
+    .scroll-content{
+        height: 80%;
+    }
+
+}

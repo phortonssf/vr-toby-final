@@ -1,0 +1,10 @@
+<!--<div class="progress-outer">-->
+<!--    <div class="progress-inner" [style.width]="progress + '%'">-->
+<!--        {{progress}}%-->
+<!--    </div>-->
+<!--</div>-->
+<div class="progress-outer">
+    <div [ngClass]="progress > 50 ? 'progress-inner-green' : 'progress-inner-red'" [style.width]="progress + '%'">
+        {{progress}}%
+    </div>
+</div>

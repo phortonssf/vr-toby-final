@@ -14,3 +14,122 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+    ion-content{
+        // background: #304352; /* fallback for old browsers */
+        // background: -webkit-linear-gradient(to bottom, $topGradient , $bottomGradient); /* Chrome 10-25, Safari 5.1-6 */
+        // background: linear-gradient(to bottom, $topGradient , $bottomGradient); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+        // drew's leet UI hax
+        background: #f8f8f8;
+    }
+    
+    .content-ios {
+        background: #f8f8f8;
+    }
+    
+    ion-navbar {
+        background: #304352; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, $topGradient , $bottomGradient); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to bottom, $topGradient , $bottomGradient); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    
+    .form-button{
+        background-color: #D7D2CC;
+        box-shadow: 5px 5px 5px #888888;
+    }
+    
+    .title {
+        font-family: 'Cinzel', serif;
+        font-size: 1em;
+    }
+   .tabs .tabbar {
+        background: transparent;
+    }
+   .top-input{
+       border-radius: 7px 7px 0px 0px;
+   }
+   
+   .bottom-input{ 
+        border-radius: 0px 0px  7px 7px;
+   }
+   
+   .whitecard {
+       background-color: #F8f8f8;
+       padding: 1rem;
+       border-radius: 4px;
+       left: 10vw;
+   }
+   
+   .niceborder {
+       border-left: 3px solid #2456a5;
+        border-right: 3px solid #2456a5;
+   }
+ 
+ ion-tabs {
+     .tabbar {
+         background-color: #ddd !important;
+     }
+ }
+ 
+ #test-footer {
+     transform: translateY(49px);
+     border-top: 2px solid #9fa09f;
+       
+ }
+ 
+ 
+ .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+    border-bottom-color: #ffffff;
+    border-top-color:  #ffffff;
+    box-shadow: inset 0 -1px 0 0 #32db64;
+}
+
+ .scroll-content {
+	margin-bottom: 110px !important;
+}
+
+ .checkbox-ios .checkbox-icon{
+        left: 40px;
+        margin-bottom: 1px;
+       
+    }
+    .answers{
+        border-bottom: 2px solid #a5a5a5;
+    }
+    
+    #chose{
+        color: #000000;
+    }
+    
+    #correct{
+        color: #0caf55;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    
+    #incorrect{
+        color: #af0c0c;
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+    
+    #tap{
+         margin-top: 2px;   
+    }
+    
+    .reviewAnswers{
+        margin-top: 4px;
+    }
+    .input-cover{
+         border: none !important;   
+    }
+    
+    .ion-ios-paper:before {
+    content: "\f472";
+    color: #247ac5;
+}
+
+.ion-ios-stats:before {
+    content: "\f21b";
+    color: #247ac5;
+}

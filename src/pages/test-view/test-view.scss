@@ -1,5 +1,53 @@
 page-test-view {
-    .ion-col{
-        width: 49%;
+    .wrong{
+        color: #d61717;
     }
+    
+    .toolbar{
+         bottom: 1rem;
+         position: fixed;
+    }
+
+    #footer-buttons{
+         bottom: 1rem !important;
+         position: fixed !important; 
+    }
+    
+    #photo-grid{
+        bottom: 100px;    
+    }
+    
+    #test{
+        bottom: 10px !important;
+        position: absolute !important;   
+    }
+    // ion-grid{
+    //      bottom: 1rem !important;
+    //      position: fixed !important;  
+    // }
+    
+    // .container {
+    //     position: absolute !important; 
+    //     bottom: 0px !important;
+    // }
+    #answer-info{
+        margin-left: 10vw !important;
+        margin-right: 10vw;
+        padding-left: 20px !important;
+        -webkit-margin-start: 0px;
+        -webkit-margin-end: 20px;
+    }
+    
+    .thumbnails{
+        background-color: #f442ee;
+    }
+    .checkbox-ios .checkbox-icon{
+        left: 40px;
+        position: absolute;
+    }
+    
+    
+    
+
 }
+

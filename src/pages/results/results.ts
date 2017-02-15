@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, App, AlertController} from 'ionic-angular';
+import { Chart } from 'chart.js';
 //Pages
 import { LandingPage } from '../landing/landing';
 import { QuestionsReviewPage } from '../questions-review/questions-review';
@@ -8,10 +9,15 @@ import { RestUser } from '../../providers/rest-user';
 import { RestTests } from '../../providers/rest-tests';
 
 @Component({
-  selector: 'page-about',
-  templateUrl: 'about.html'
+  selector: 'page-results',
+  templateUrl: 'results.html'
 })
-export class AboutPage {
+export class ResultsPage {
+  
+  @ViewChild('doughnutCanvas') doughnutCanvas;
+  
+  doughnutChart: any;
+  loadProgress: number;
   userId: string = "";
   userToken: string = "";
   completedTests: any[] = [];
@@ -30,21 +36,47 @@ export class AboutPage {
       .subscribe(res => {
         console.log("did enter: ", res)
         for (let i = 0; i < res.length; i++){
-          if(res[i].answerIds.length === res[i].totalCount){
+          if(res[i].userAnswerIds.length === res[i].totalCount){
             completedTests.push(res[i]);
           }
+        }
+        for (let i = 0; i < completedTests.length; i++){
+          this.loadProgress =  100*completedTests[i].totalCorrect / completedTests[i].totalCount;
+          completedTests[i].loadProgress = this.loadProgress;
         }
         console.log("tests done", completedTests)
       }, err => {
        this.answersError()
       })
-      console.log("about constructor")
+      console.log("Results constructor")
+      
   }
   
   ionViewWillEnter(){
-  
-      
+    // this.drawChart(7,10);  
   }
+  
+  //Doughnut chart
+  // drawChart(correct, total) {
+  //   return this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+  //     type: 'doughnut',
+  //     data: {
+  //       labels: ["Right", "Wrong"],
+  //       datasets: [{
+  //         label: '# of Votes',
+  //         data: [correct, total],
+  //         backgroundColor: [
+  //           'rgba(30, 215, 96, 0.2)',
+  //           'rgba(255, 99, 132, 0.2)'
+  //         ],
+  //         hoverBackgroundColor: [
+  //           "#08f95e",
+  //           "#FF6384"
+  //         ]
+  //       }]
+  //     }
+  //   });
+  // }
   
   reviewTest(test){
     this._restTests.getQuestions( test.testId, this.userToken )
@@ -58,7 +90,8 @@ export class AboutPage {
               "questions": this.questions,
               "answers": res,
               "testTakenId": test.testId,
-              "testTitle": test.title
+              "testTitle": test.title,
+              "totalCorrect": test.totalCorrect
             })
           }, err => {
             this.answersError()
@@ -81,17 +114,17 @@ export class AboutPage {
   //alert to confirm logout
   logoutConfirm() {
     let confirm = this._alert.create({
-      title: 'Do you still want to logout?',
+      title: 'Are you sure you want to logout?',
       //message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
       buttons: [
         {
-          text: 'Disagree',
+          text: 'Cancel',
           handler: () => {
             console.log('Disagree clicked');
           }
         },
         {
-          text: 'Agree',
+          text: 'Logout',
           handler: () => {
             console.log('Agree clicked');
             this.logout()

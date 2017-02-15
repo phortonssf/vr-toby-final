@@ -11,8 +11,8 @@ $font-path: "../assets/fonts";
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
-
-
+$toolbar-background: transparent;
+$tabbar-background: transparent;
 
 
 // Named Color Variables
@@ -24,25 +24,33 @@ $font-path: "../assets/fonts";
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #387ef5,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  
+ 
+  //primary:    #387ef5,
+  //blue color on tabs active, button press and alert button text
+ // primary:    #2456a5,
+   primary:   #171819,
+   secondary:  #32db64,
+   danger:     #f53d3d,
+   light:      #f4f4f4,
+   dark:       #f442f1,
+   
 );
-
-
+//Colors for background
+$topGradient: #304352;
+$bottomGradient: #d7d2cc;
+$content-ios-margin-bottom: 20px;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
+$checkbox-ios-item-left-margin: 0px;
+$checkbox-ios-item-right-margin: 0px;
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
+$tabs-md-background:                    #f8f8f8;
 
 
 

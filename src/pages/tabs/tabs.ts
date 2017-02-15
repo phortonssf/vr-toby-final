@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavParams, Tabs, NavController } from 'ionic-angular';
 //Pages
 import { HomePage } from '../home/home';
-import { AboutPage } from '../about/about';
+import { ResultsPage } from '../results/results';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   tab1Root: any = HomePage;
-  tab2Root: any = AboutPage;
+  tab2Root: any = ResultsPage;
   
  constructor(public _navP:NavParams, public navCtrl: NavController) {
       let tabIndex = this._navP.get('tabIndex');

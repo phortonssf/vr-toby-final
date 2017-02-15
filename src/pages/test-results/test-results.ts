@@ -6,7 +6,7 @@ import { RestTests } from '../../providers/rest-tests';
 import { TabsService } from '../../providers/tabs-service';
 //Pages
 import { HomePage } from '../home/home';
-
+import { TestReviewPage } from '../test-review/test-review';
 
 @Component({
   selector: 'page-test-results',
@@ -76,5 +76,13 @@ tab:Tabs;
     this.tabs.show()
   }
   
+   reviewQuestion = function ( question, questionIndex ) {
+    console.log("question", questionIndex)
+    this._nav.push(TestReviewPage, {
+      "testTitle": this.testTitle,
+      "questions": this.questions,
+      "currentQuestion": questionIndex
+    })
+  }
 
 }

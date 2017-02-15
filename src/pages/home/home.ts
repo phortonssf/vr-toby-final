@@ -20,7 +20,7 @@ export class HomePage {
   
   constructor(public _nav: NavController, private _modal: ModalController,
     public _restTests: RestTests, private _restUser: RestUser,
-    public app: App, public alertCtrl: AlertController) 
+    public app: App, public _alert: AlertController) 
   {
     //Retrieves userId from local storage
     this.userId = window.localStorage.getItem('userId');
@@ -32,10 +32,18 @@ export class HomePage {
       .subscribe(res => {
         this.tests = res
       }, err => {
-        alert("Error");
-          console.log(err);
+        this.loginAlert();
       })
   };
+    loginAlert() {
+    let alert = this._alert.create({
+      title: 'Error',
+      subTitle: "Something Went Wrong. Please Try Again.",
+      buttons: ['Dismiss']
+    });
+    alert.present();
+  }
+  
   /*Click when user goes to take test. Passes in the clicked test and creates a new 
   test taken record on backend that the user owns*/
   takeTest(clickedTest){
@@ -89,18 +97,19 @@ export class HomePage {
   
   //Logout Confirm alert
   logoutConfirm() {
-    let confirm = this.alertCtrl.create({
-      title: 'Do you still want to logout?',
+    let confirm = this._alert.create({
+      title: 'Are you sure you want to logout?',
       //message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
       buttons: [
         {
-          text: 'Disagree',
+          text: 'Cancel',
+          class: 'cancel-btn',
           handler: () => {
             console.log('Disagree clicked');
           }
         },
         {
-          text: 'Agree',
+          text: 'Yes',
           handler: () => {
             console.log('Agree clicked');
             this.logout()

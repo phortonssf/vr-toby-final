@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title align="center"> Test History </ion-title>
+    <ion-buttons end>
+     
+      <button ion-button icon-only (click)="logoutConfirm()">
+        <ion-icon name="exit"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <!--<h2 align="center"> Your Test Results </h2>-->
+</ion-header>
+
+
+<ion-content>
+   <h4 align="center"> Click On A Test To Rewiew</h4>
+  <ion-card *ngFor=" let test of completedTests" (click)="reviewTest(test)">
+    <ion-card-header align="center">
+      <h2 align="center"> {{ test.title }}</h2>
+    <h5> {{ test.totalCorrect }} Cases Correct </h5>
+    </ion-card-header>
+    <ion-card-content>
+      <progress-bar [progress]="test.loadProgress"></progress-bar>
+   
+    </ion-card-content>
+    
+  </ion-card>
+</ion-content>
+
+<!--<ion-content>-->
+<!--  <ion-card>-->
+<!--    <ion-card-header>-->
+      
+<!--    </ion-card-header>-->
+<!--    <ion-card-content>-->
+<!--      <canvas class='chart' #doughnutCanvas></canvas>-->
+<!--    </ion-card-content>-->
+<!--  </ion-card>-->
+  
+<!--</ion-content>-->

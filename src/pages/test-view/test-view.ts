@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController, NavController, NavParams, AlertController } from 'ionic-angular';
 import { GalleryModal } from 'ionic-gallery-modal';
 // Providers
@@ -14,7 +14,6 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'test-view.html'
 })
 export class TestViewPage {
-  @ViewChild('testSlider') testSlider: any;
   
   private photos: any[] = [];
   testId: any;
@@ -31,9 +30,9 @@ export class TestViewPage {
   testTitle: string = "";
   //length: number = this.questions[this.currentQuestion].imageIds.length;
   
-  constructor(public _nav: NavController, private _modal: ModalController,
-    private _restTests: RestTests, private _restUser: RestUser,
-    private _navP: NavParams, private alertCtrl: AlertController, public tabs: TabsService) 
+  constructor(public _nav: NavController, public _modal: ModalController,
+    public _restTests: RestTests, public _restUser: RestUser,
+    public _navP: NavParams, public alertCtrl: AlertController, public tabs: TabsService) 
   {
     this.tabs.hide();
     //Get data from _navP pass from previous page with _nav
@@ -46,6 +45,7 @@ export class TestViewPage {
     //Local staorage
     this.userToken = window.localStorage.getItem('userToken');
     //gets photos
+    console.log(this.questions[this.currentQuestion].imgArray)
     this.createPhotos(this.questions[this.currentQuestion].imgArray); 
   }
   
@@ -66,6 +66,7 @@ export class TestViewPage {
 
 //Creates Photos to be displayed for the current question
  createPhotos(questionImages) {
+   console.log("creatphoto: ", questionImages)
   for (let i = 0; i < questionImages.length; i++) {
       this.photos.push({
         url: `https://vr-toby-jbrownssf.c9users.io/api/ImageContainer/image-container/download/` + questionImages[i],
@@ -78,17 +79,17 @@ export class TestViewPage {
 
 closeTest() {
     let confirm = this.alertCtrl.create({
-      title: 'Do you want to quit current test?',
+      title: 'Exit the current test?',
      // message: 'Your progess will be saved and you can resume at a later time',
       buttons: [
         {
-          text: 'Disagree',
+          text: 'Cancel',
           handler: () => {
             console.log('Disagree clicked');
           }
         },
         {
-          text: 'Agree',
+          text: 'Exit',
           handler: () => {
             console.log('Agree clicked');
            this._nav.setRoot(TabsPage);
@@ -98,6 +99,7 @@ closeTest() {
     });
     confirm.present();
   }
+  
 
   /*On click from user on asnwer button updates answer if one already exists for 
   the user on this question or test or creates*/

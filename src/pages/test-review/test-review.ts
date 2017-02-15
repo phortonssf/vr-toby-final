@@ -6,7 +6,8 @@ import { RestTests } from '../../providers/rest-tests';
 import { RestUser } from '../../providers/rest-user';
 import { TabsService } from '../../providers/tabs-service';
 //Pages
-import { AboutPage } from '../about/about';
+import { ResultsPage } from '../results/results';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'test-review',
@@ -14,7 +15,7 @@ import { AboutPage } from '../about/about';
 })
 export class TestReviewPage {
   @ViewChild('testSlider') testSlider: any;
-  
+ 
   private photos: any[] = [];
   testId: any;
   public imageIds: any[] = [];
@@ -22,14 +23,16 @@ export class TestReviewPage {
   userToken: string = "";
   testTakenId: string = "";
   questions: any[] = [];
-  currentQuestion: number = 0;
+  currentQuestion: number;
   test: any;
   answers: any[] = [];
   viewPic: string;
   imageIndex: any = 0;
   
   testTitle: string = "";
-  //length: number = this.questions[this.currentQuestion].imageIds.length;
+  answerToShow: string ="";
+  userAnswerToShow: string ="";
+  //length: number = 
   
   constructor(public _nav: NavController, private _modal: ModalController,
     private _restTests: RestTests, private _restUser: RestUser,
@@ -42,14 +45,16 @@ export class TestReviewPage {
     this.questions = this._navP.get("questions");
     this.testTitle = this._navP.get("testTitle");
     this.currentQuestion = this._navP.get("currentQuestion");
-    //this.answers = this._navP.get("answers");
+    this.answerToShow = this.questions[this.currentQuestion].answer;
+    this.userAnswerToShow = this.questions[this.currentQuestion].answerGiven;
+    //this.answers = this._navP.get("answers");     this.questions[this.currentQuestion].imageIds.length;
     
     //Local staorage
     this.userToken = window.localStorage.getItem('userToken');
-    
+
     //gets photos
    this.createPhotos(this.questions[this.currentQuestion].imgArray); 
-    console.log("hello", this.questions)
+    
   }
   
  //Select image to View
@@ -62,8 +67,8 @@ export class TestReviewPage {
   imageZoom() {
     let modal = this._modal.create(GalleryModal, {
     photos: this.photos,
-       // initialSlide: this.imageIndex
-    initialSlide: this.currentQuestion
+    initialSlide: this.imageIndex
+    //initialSlide: this.currentQuestion
   });
   modal.present();
   }
@@ -82,7 +87,7 @@ createPhotos(questionImages) {
 
   closeTest() {
     let confirm = this.alertCtrl.create({
-      title: 'Do you want to quit current test?',
+      title: 'Are you sure you want to return to results history?',
      // message: 'Your progess will be saved and you can resume at a later time',
       buttons: [
         {
@@ -95,7 +100,9 @@ createPhotos(questionImages) {
           text: 'Agree',
           handler: () => {
             console.log('Agree clicked');
-           this._nav.setRoot(AboutPage);
+           this._nav.push(TabsPage,{
+             "tabIndex": 1
+           });
           }
         }
       ]
@@ -104,7 +111,8 @@ createPhotos(questionImages) {
   }
   
   nextPage(num){
-    this.currentQuestion + num
+    console.log(num)
+  this.currentQuestion = this.currentQuestion + num;
     this._nav.push(TestReviewPage, {
       "testTitle": this.testTitle,
       "questions": this.questions,

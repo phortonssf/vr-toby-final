@@ -19,13 +19,24 @@
   <!--    {{ test.description }}-->
   <!--  </ion-card-content>-->
   <!--</ion-card>-->
+  <p align="center" class="whitecard niceborder"> VR-Toby is a deep machine learning system. Select a quiz and identify where the hearts displayed are enlarged or not. Your answers will help the AI learn.
+</p >
   
   <ion-list>
     <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
       <ion-thumbnail>
-        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSd20d5uTTvOJ6kT7ANcGPb3iNnOcMfTDAtEVUrvTlOrRrzyTuE5w" [navPush]="pushPage">
+        <img src="assets/img/homeIcon-1.png" [navPush]="pushPage">
       </ion-thumbnail>
       <h2>Level {{$index + 1}}</h2>
+      <h3>{{test.title}}</h3>
+      <h3>{{8}}/{{10}}</h3>
+    </ion-item>
+    
+    <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
+      <ion-thumbnail>
+        <img src="assets/img/homeIcon-2.png" [navPush]="pushPage">
+      </ion-thumbnail>
+      <h2>Level {{$index + 2}}</h2>
       <h3>{{test.title}}</h3>
       <h3>{{8}}/{{10}}</h3>
     </ion-item>

@@ -1,3 +1,45 @@
 page-register {
+    #register-button{
+         margin-top: 40px;
+         color: #171819;
+    }
+      
+    .button-inner{
+       font-family: 'Cinzel', serif;
+        font-size: 1.5em;
+        font-weight: .2em;
+    }
+    
+    form {
+        margin-top: 100px;
+    }
+    
+     .input-wrapper{
+     margin: .8em;
+    border: 1px solid #ced4d4;
+    border-radius: 6px;
+    padding-left: 10px;
+   }
+   .item-ios {
+    position: relative;
+    padding-left: 16px;
+    border-radius: 0;
+    font-size: 1.7rem;
+   
+    background-color: #f8f8f8;
+    transition: background-color 200ms linear;
+    transition-property: background-color;
+    transition-duration: 200ms;
+    transition-timing-function: linear;
+    transition-delay: initial;
+}
+
+.item-ios.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: none;
+    
+}
+
+
 
 }

@@ -19,8 +19,8 @@ export class LandingPage {
   
   // Empty User object to be filled by loginForm()
   user = {
-    email: "test1@gmail.com",
-    password: "test"
+    email: "",
+    password: ""
   };
 
   //Invoked by login button
