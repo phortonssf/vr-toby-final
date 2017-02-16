@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class RestUser {
- baseUrl: string = "https://vr-toby-jbrownssf.c9users.io:8080/api/AppUsers/";
+ baseUrl: string = "http://ec2-52-32-39-215.us-west-2.compute.amazonaws.com/api/AppUsers/";
   constructor(public http: Http) {
     console.log('Hello RestsUser Provider');
   }

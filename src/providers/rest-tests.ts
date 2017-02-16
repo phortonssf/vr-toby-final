@@ -11,7 +11,7 @@ export class RestTests {
   constructor(public http: Http) {
     console.log('Hello Tests Provider');
   }
-  baseUrl = "https://vr-toby-jbrownssf.c9users.io:8080/api/"
+  baseUrl = "http://ec2-52-32-39-215.us-west-2.compute.amazonaws.com/api/"
  
   // Gets all test from our server
   getTests(token){

@@ -22,8 +22,13 @@ export class QuestionsReviewPage {
   userId: string = "";
   testTitle: string = "";
   
-  constructor(public _nav: NavController, public _navP: NavParams, public _alert: AlertController) {
-    
+  constructor(
+    public _nav: NavController, 
+    public _navP: NavParams, 
+    public _alert: AlertController
+  ) 
+  {
+    // this.config.swipeBackEnabled = false;
     this.answers = this._navP.get("answers");
     this.testTitle = this._navP.get("testTitle");
     this.questions = this._navP.get("questions");
@@ -45,6 +50,7 @@ export class QuestionsReviewPage {
       this.questions[i].imgArray = this.questions[i].imageIds.split(",")
     }
   }
+  
   reviewQuestion = function ( question, questionIndex ) {
     console.log("question", questionIndex)
     this._nav.push(TestReviewPage, {

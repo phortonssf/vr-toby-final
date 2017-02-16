@@ -6,7 +6,7 @@ import { RestTests } from '../../providers/rest-tests';
 import { RestUser } from '../../providers/rest-user';
 import { TabsService } from '../../providers/tabs-service';
 //Pages
-import { ResultsPage } from '../results/results';
+//import { ResultsPage } from '../results/results';
 import { TabsPage } from '../tabs/tabs';
 
 @Component({
@@ -77,7 +77,7 @@ export class TestReviewPage {
 createPhotos(questionImages) {
   for (let i = 0; i < questionImages.length; i++) {
       this.photos.push({
-        url: `https://vr-toby-jbrownssf.c9users.io/api/ImageContainer/image-container/download/` + questionImages[i],
+        url: `http://ec2-52-32-39-215.us-west-2.compute.amazonaws.com/api/ImageContainer/image-container/download/` + questionImages[i],
       });
     }
     this.viewPic = this.photos[0].url;

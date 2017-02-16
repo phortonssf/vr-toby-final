@@ -13,11 +13,12 @@
 
 
 <ion-content>
-   <h4 align="center"> Click On A Test To Rewiew</h4>
+   <h4 align="center"> Click On A Test To Review</h4>
   <ion-card *ngFor=" let test of completedTests" (click)="reviewTest(test)">
     <ion-card-header align="center">
       <h2 align="center"> {{ test.title }}</h2>
     <h5> {{ test.totalCorrect }} Cases Correct </h5>
+    <!--<date [myDate]="test.createDate"></date>-->
     </ion-card-header>
     <ion-card-content>
       <progress-bar [progress]="test.loadProgress"></progress-bar>

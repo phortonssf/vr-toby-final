@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, App, AlertController} from 'ionic-angular';
-import { Chart } from 'chart.js';
+//import { Chart } from 'chart.js';
 //Pages
 import { LandingPage } from '../landing/landing';
 import { QuestionsReviewPage } from '../questions-review/questions-review';

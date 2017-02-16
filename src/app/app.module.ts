@@ -2,6 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { DateComponent } from '../components/date/date';
 
 //  Providers
 import { RestTests } from '../providers/rest-tests'; 
@@ -41,9 +42,15 @@ const injections = [
     ]
 
 @NgModule({
-  declarations: [injections, ProgressBarComponent],
+  declarations: [injections, ProgressBarComponent, DateComponent],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      platforms: {
+        ios: {
+          swipeBackEnabled: false
+        }
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: injections,
