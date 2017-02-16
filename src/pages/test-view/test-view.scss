@@ -1,53 +1,69 @@
-page-test-view {
-    .wrong{
-        color: #d61717;
+test-view {
+    .scroll-content {
+     //overflow-y: hidden !important;
+    }    
+    .checkbox-container{
+        margin-top: 1px;
     }
     
-    .toolbar{
-         bottom: 1rem;
-         position: fixed;
-    }
-
-    #footer-buttons{
-         bottom: 1rem !important;
-         position: fixed !important; 
+    
+    .toolbar-title{
+        margin-left: 16% !important;
     }
     
-    #photo-grid{
-        bottom: 100px;    
+    #main-image{
+        margin-bottom: 3px;
+    }
+    .thumbnails {
+        padding: 0px;
+        position: absolute;
+        bottom: 11%;
+        height: 15%;
+        margin-bottom: 20px;
+        background-color: #f8f8f8;
+        max-height: 40%;
     }
     
-    #test{
-        bottom: 10px !important;
-        position: absolute !important;   
-    }
-    // ion-grid{
-    //      bottom: 1rem !important;
-    //      position: fixed !important;  
-    // }
-    
-    // .container {
-    //     position: absolute !important; 
-    //     bottom: 0px !important;
-    // }
-    #answer-info{
-        margin-left: 10vw !important;
-        margin-right: 10vw;
-        padding-left: 20px !important;
-        -webkit-margin-start: 0px;
-        -webkit-margin-end: 20px;
-    }
-    
-    .thumbnails{
-        background-color: #f442ee;
-    }
-    .checkbox-ios .checkbox-icon{
-        left: 40px;
+    .pic-row{
+        height: 100%;
         position: absolute;
     }
     
+    .box-info{
+        margin-top: 5px;
+        margin-bottom: 1px !important;
+        position: absolute;
+    }
     
+    .answer-info{
+        margin-top: 2px !important;
+        margin-bottom: 2px !important;
+    }
     
+    // ion-checkbox {
+    //     position: relative;
+    //     width: 21px;
+    //     height: 21px;
+    //     border-width: 1px;
+    //     margin-left: 45%;
+    //     border-style: solid;
+    //     border-radius: 50%;
+    //     border-color: #c8c7cc;
+    //     background-color: #fff;
+    //     display: block;
+    // }
+    ion-checkbox{
+        margin-left: 35% !important;
+       
+    }
+    
+    #test-footer {
+        border-top: 2px solid #9fa09f;
+        position: fixed;
+        height: 12%;
+        top: 89%;
+    }
 
+    
 }
 

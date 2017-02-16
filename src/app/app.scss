@@ -22,7 +22,9 @@
         // drew's leet UI hax
         background: #f8f8f8;
     }
-    
+    .scroll-content{
+         background-color: #f8f8f8;
+    }
     .content-ios {
         background: #f8f8f8;
     }
@@ -53,17 +55,9 @@
         border-radius: 0px 0px  7px 7px;
    }
    
-   .whitecard {
-       background-color: #F8f8f8;
-       padding: 1rem;
-       border-radius: 4px;
-       left: 10vw;
-   }
+
    
-   .niceborder {
-       border-left: 3px solid #2456a5;
-        border-right: 3px solid #2456a5;
-   }
+  
  
  ion-tabs {
      .tabbar {
@@ -71,11 +65,7 @@
      }
  }
  
- #test-footer {
-     transform: translateY(49px);
-     border-top: 2px solid #9fa09f;
-       
- }
+
  
  
  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
@@ -84,15 +74,12 @@
     box-shadow: inset 0 -1px 0 0 #32db64;
 }
 
- .scroll-content {
-	margin-bottom: 110px !important;
-}
+//  .scroll-content {
+// 	margin-bottom: 110px !important;
+	
+// }
 
- .checkbox-ios .checkbox-icon{
-        left: 40px;
-        margin-bottom: 1px;
-       
-    }
+
     .answers{
         border-bottom: 2px solid #a5a5a5;
     }
@@ -118,7 +105,7 @@
     }
     
     .reviewAnswers{
-        margin-top: 4px;
+        margin-top: 10px;
     }
     .input-cover{
          border: none !important;   
@@ -132,4 +119,8 @@
 .ion-ios-stats:before {
     content: "\f21b";
     color: #247ac5;
+}
+
+.image{
+    background-color: #000000;
 }

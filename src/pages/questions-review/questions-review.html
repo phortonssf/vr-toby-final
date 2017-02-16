@@ -15,7 +15,7 @@
      <p align="center"  margin-left="20px" margin-right="20px"> Click on a case below to review the case again. </p>
      <ion-card>
        <ion-card-content>
-           <button ion-item class="answers"  detail-push *ngFor="let question of questions; let i = index" (click)="reviewQuestion(question, i)">
+           <button ion-item class="answers" detail-push *ngFor="let question of questions; let i = index" (click)="reviewQuestion(question, i)">
          <h3 align="center"> Case  {{ i + 1 }} was {{ question.answer }} </h3>
            <p id="chose" align="center"> You chose</p>
           <p align = center *ngIf="question.answer != question.answerGiven"  [ngClass]="'wrong'">

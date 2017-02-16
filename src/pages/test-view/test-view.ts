@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController, NavParams, AlertController } from 'ionic-angular';
+import { ModalController, NavController, NavParams, AlertController, App  } from 'ionic-angular';
 import { GalleryModal } from 'ionic-gallery-modal';
 // Providers
 import { RestTests } from '../../providers/rest-tests';
@@ -32,9 +32,10 @@ export class TestViewPage {
   
   constructor(public _nav: NavController, public _modal: ModalController,
     public _restTests: RestTests, public _restUser: RestUser,
-    public _navP: NavParams, public alertCtrl: AlertController, public tabs: TabsService) 
+    public _navP: NavParams, public alertCtrl: AlertController, public tabs: TabsService,
+    private _app: App) 
   {
-    this.tabs.hide();
+    
     //Get data from _navP pass from previous page with _nav
     this.testId =  this._navP.get("testId");
     this.testTakenId = this._navP.get("testTakenId");
@@ -47,8 +48,11 @@ export class TestViewPage {
     //gets photos
     console.log(this.questions[this.currentQuestion].imgArray)
     this.createPhotos(this.questions[this.currentQuestion].imgArray); 
+    
   }
-  
+  ionViewDidEnter(){
+    this._app._setDisableScroll(true);
+  }
  //Select image to View
   selectImage(img, i) {
     this.viewPic = img;
@@ -58,10 +62,10 @@ export class TestViewPage {
 //Creates Modal on click of the main image.
   imageZoom() {
     let modal = this._modal.create(GalleryModal, {
-    photos: this.photos,
-    initialSlide: this.imageIndex
-  });
-  modal.present();
+      photos: this.photos,
+      initialSlide: this.imageIndex
+    });
+    modal.present();
   }
 
 //Creates Photos to be displayed for the current question
@@ -69,7 +73,7 @@ export class TestViewPage {
    console.log("creatphoto: ", questionImages)
   for (let i = 0; i < questionImages.length; i++) {
       this.photos.push({
-        url: `http://ec2-52-32-39-215.us-west-2.compute.amazonaws.com/api/ImageContainer/image-container/download/` + questionImages[i],
+        url: `https://vr-toby-jbrownssf.c9users.io:8080/api/ImageContainer/image-container/download/` + questionImages[i],
       });
     }
     this.viewPic = this.photos[0].url;

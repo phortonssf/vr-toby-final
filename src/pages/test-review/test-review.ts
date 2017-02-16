@@ -39,7 +39,7 @@ export class TestReviewPage {
     private _navP: NavParams, private alertCtrl: AlertController, public tabs: TabsService) 
   {
     //Hides Tabs
-    this.tabs.hide();
+    //this.tabs.hide();
     //Get data from _navP pass from previous page with _nav
     this.testId =  this._navP.get("testId");
     this.questions = this._navP.get("questions");
@@ -77,7 +77,7 @@ export class TestReviewPage {
 createPhotos(questionImages) {
   for (let i = 0; i < questionImages.length; i++) {
       this.photos.push({
-        url: `http://ec2-52-32-39-215.us-west-2.compute.amazonaws.com/api/ImageContainer/image-container/download/` + questionImages[i],
+        url: `https://vr-toby-jbrownssf.c9users.io:8080/api/ImageContainer/image-container/download/` + questionImages[i],
       });
     }
     this.viewPic = this.photos[0].url;

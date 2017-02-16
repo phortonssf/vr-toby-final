@@ -5,8 +5,8 @@ import { RestUser} from '../../providers/rest-user';
 import { RestTests } from '../../providers/rest-tests';
 import { TabsService } from '../../providers/tabs-service';
 //Pages
-import { HomePage } from '../home/home';
 import { TestReviewPage } from '../test-review/test-review';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-test-results',
@@ -72,8 +72,9 @@ tab:Tabs;
 
   closeTestResult(){ console.log(this.tab)
   // this._app.setRootNav.setRoot(TabsPage, {tabIndex: 1});
-    this._navCtrl.setRoot(HomePage);
-    this.tabs.show()
+    this._navCtrl.setRoot(TabsPage,{
+      "tabIndex": 1
+    });
   }
   
    reviewQuestion = function ( question, questionIndex ) {

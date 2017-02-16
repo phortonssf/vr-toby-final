@@ -35,7 +35,8 @@ export class HomePage {
         this.loginAlert();
       })
   };
-    loginAlert() {
+  
+  loginAlert() {
     let alert = this._alert.create({
       title: 'Error',
       subTitle: "Something Went Wrong. Please Try Again.",
@@ -73,7 +74,8 @@ export class HomePage {
         for (var i = 0; i < length; i++){
           clickedTest.questionIds[i].imgArray = clickedTest.questionIds[i].imageIds.split(",")
         }
-        this._nav.push(TestViewPage, {
+        this.app.getRootNav().setRoot(TestViewPage,{
+        //this._nav.push(TestViewPage, {
           "testId": clickedTest.id, 
           "testTakenId": res.id, 
           "questions": clickedTest.questionIds,

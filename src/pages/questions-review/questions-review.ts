@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, App } from 'ionic-angular';
 
 //Pages
 import { TestReviewPage } from '../test-review/test-review';
@@ -25,7 +25,8 @@ export class QuestionsReviewPage {
   constructor(
     public _nav: NavController, 
     public _navP: NavParams, 
-    public _alert: AlertController
+    public _alert: AlertController,
+    public _app: App
   ) 
   {
     // this.config.swipeBackEnabled = false;
@@ -52,8 +53,8 @@ export class QuestionsReviewPage {
   }
   
   reviewQuestion = function ( question, questionIndex ) {
-    console.log("question", questionIndex)
-    this._nav.push(TestReviewPage, {
+    //this._nav.push(TestReviewPage, {
+      this._app.getRootNav().setRoot( TestReviewPage,{
       "testTitle": this.testTitle,
       "questions": this.questions,
       "currentQuestion": questionIndex
