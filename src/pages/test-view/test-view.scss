@@ -6,13 +6,19 @@ test-view {
         margin-top: 1px;
     }
     
-    
+  
     .toolbar-title{
         margin-left: 16% !important;
     }
     
     #main-image{
         margin-bottom: 3px;
+        height: 60%;
+        display: block;
+        margin: auto;
+    }
+    .picture{
+        max-height: 142px;
     }
     .thumbnails {
         padding: 0px;
@@ -25,14 +31,16 @@ test-view {
     }
     
     .pic-row{
-        height: 100%;
-        position: absolute;
+        
+        
     }
     
     .box-info{
         margin-top: 5px;
         margin-bottom: 1px !important;
-        position: absolute;
+        
+        text-align: center;
+        width: 100%;
     }
     
     .answer-info{
@@ -53,7 +61,7 @@ test-view {
     //     display: block;
     // }
     ion-checkbox{
-        margin-left: 35% !important;
+       // margin-left: 35% !important;
        
     }
     

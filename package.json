@@ -9,7 +9,7 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "run:before": "build",
-    "ion": "ionic serve -p 8080 --nolivereload"
+    "ion": "ionic serve -p 8081 --nolivereload"
   },
   "dependencies": {
     "@angular/common": "2.2.1",

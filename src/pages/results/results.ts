@@ -28,7 +28,7 @@ export class ResultsPage {
   {  
     this.userId = window.localStorage.getItem('userId');
     this.userToken = window.localStorage.getItem('userToken');
-    let completedTests = [];
+      let completedTests = [];
     this.completedTests = completedTests;
 
     this._restTests.getCompletedTests( this.userId, this.userToken ) 
@@ -49,10 +49,10 @@ export class ResultsPage {
        this.answersError()
       })
       console.log("Results constructor")
-      
   }
   
   ionViewWillEnter(){
+    
     // this.drawChart(7,10);  
   }
   

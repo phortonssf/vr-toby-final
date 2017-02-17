@@ -21636,6 +21636,13 @@ test-view .toolbar-title {
 
 test-view #main-image {
   margin-bottom: 3px;
+  height: 60%;
+  display: block;
+  margin: auto;
+}
+
+test-view .picture {
+  max-height: 142px;
 }
 
 test-view .thumbnails {
@@ -21648,24 +21655,16 @@ test-view .thumbnails {
   max-height: 40%;
 }
 
-test-view .pic-row {
-  height: 100%;
-  position: absolute;
-}
-
 test-view .box-info {
   margin-top: 5px;
   margin-bottom: 1px !important;
-  position: absolute;
+  text-align: center;
+  width: 100%;
 }
 
 test-view .answer-info {
   margin-top: 2px !important;
   margin-bottom: 2px !important;
-}
-
-test-view ion-checkbox {
-  margin-left: 35% !important;
 }
 
 test-view #test-footer {
