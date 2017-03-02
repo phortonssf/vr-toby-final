@@ -1,70 +1,114 @@
 <ion-header>
   <ion-navbar hideBackButton>
-    <ion-title align="center"> {{ testTitle }} </ion-title>
-    
+    <progress-bar [progress]="loadProgress"></progress-bar>
     <ion-buttons end>
       <button ion-button (click)="closeTest()">
         Close
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-<!--<ion-content >
-  <ion-scroll direction="xy" delegate-handle="zoom-pane" class="zoom-pane" min-zoom="1" scrollbar-x="false" scrollbar-y="false" overflow-scroll="false" style="height: 100%;"  *ngFor="let photo of photos; let i = index"  scrollX="true" scrollY="true" [zoom]="true" maxZoom="20">
-    <img [src]="photo.url"/>>
-  </ion-scroll>
-</ion-content>-->
-
-
-
 <ion-content>
-    <!--<h5 align="center">  Case {{ currentQuestion + 1 }} of {{ questions.length  }}  </h5>
+  <div id="fullscreen-flex-tv">
+    <div id="content-wrapper-tv">
+      <!--Portrait View-->
+      <ion-grid id="view-wrapper-tv">
+        <ion-row id="main-row-tv">
+          <ion-col id="main-col-tv" col-4>
+            <img id="main-img-tv" (click)="imageZoom()" [src]="viewPic" />
 
-    <p align="center"  margin-left="20px" margin-right="20px"> Tap on Image below to open full screen.</p> -->
+          </ion-col>
+          <ion-col id="second-col-tv">
+            <ion-row id="thumbnail-row-tv">
+              <ion-col class="photos-col-tv" *ngFor='let photo of photos; let i = index' [ngClass]="{'selected-img-tv': photo.url === viewPic }">
 
-    <img id="main-image" (click)="imageZoom()" [src]="viewPic"/>
-    <!--<img *ngIf='imageIndex == 1' (click)="imageZoom()" [src]="viewPic"/>-->
-    <!--<img *ngIf='imageIndex == 2' (click)="imageZoom()" [src]="viewPic"/>-->
+                <button ion-button block small color="light" class="select-button-tv" *ngIf="photos.length == 2 && i == 0" (click)="presentActionSheet(i)">{{heart[i]}}</button>
 
-  <ion-grid class="thumbnails">
-    <p class="box-info"  > Mark below each image that looks enlarged.</p>
-    <ion-row class="pic-row" >
-      <ion-col class="picture" *ngFor='let photo of photos; let i = index'>
-        <!--<span style="margin:auto; width: 16px; display: block;">-->
-          <ion-checkbox style="margin:auto; width: 16px; display: block;" color="primary" checked="false"></ion-checkbox>
-        <!--</span> -->
-        <img style="max-height: 142px; display: block; margin: auto;" (click)="selectImage(photo.url, i)" [src]="photo.url"/>
+                <button ion-button block small color="light" class="select-button-tv" *ngIf="photos.length == 2 && i == 1" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+
+                <button ion-button block small color="light" class="select-button-tv" *ngIf="photos.length > 2 && i == 0" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+
+                <button ion-button block small color="light" class="select-button-tv" *ngIf="photos.length > 2 && i == 1" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+
+                <button ion-button block small color="light" class="select-button-tv" *ngIf="photos.length > 2 && i == 2" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+
+                <img class="thumbnails-tv" (click)="selectImage(photo.url, i)" [src]="photo.url" />
+                <button ion-button clear color="dark" (click)="imageZoom(i)">{{zoom}}</button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+  <!--Landscape View
+  <ion-grid *ngIf="checkViewLandscape()">
+    <ion-row>
+      <ion-col>
+      <progress-bar [progress]="loadProgress"></progress-bar>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col>
+        <ion-row>
+          <ion-col>
+            <img (click)="imageZoom()" [src]="viewPic"/>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+      <ion-row>
+      
+        <ion-col>
+          <ion-row>
+            <ion-col *ngFor='let photo of photos; let i = index' width-33>
+              <ion-row *ngIf="photos.length == 2 && i == 0"><h5>Right Side</h5></ion-row>
+              <ion-row *ngIf="photos.length == 2 && i == 1"><h5>VD</h5></ion-row>
+              <ion-row *ngIf="photos.length > 2 && i == 0"><h5>Left Side</h5></ion-row>
+              <ion-row *ngIf="photos.length > 2 && i == 1"><h5>Right Side</h5></ion-row>
+              <ion-row *ngIf="photos.length > 2 && i == 2"><h5>VD</h5></ion-row>
+              <img (click)="selectImage(photo.url, i)" [src]="photo.url"/>
+              <button ion-button clear color="dark" (click)="imageZoom(i)">{{zoom}}</button>
+              <button ion-button clear color="dark" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        
+      </ion-row>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col width-33>
+          <button ion-button color="dark" align="center" (click)="selectAnswer('Normal')">Normal</button>
+        </ion-col>
+        <ion-col width-33>
+          <button ion-button color="dark" align="center" (click)="selectAnswer('Undetermined')">Undetermined</button>
+        </ion-col>
+        <ion-col width-33>
+          <button ion-button color="dark" align="center" (click)="selectAnswer('Enlarged')">Enlarged</button>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+-->
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title align="center">Grade Case</ion-title>
+
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row id="answer-row-tv">
+      <ion-col class="answer-button-col" width-33>
+        <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="selectAnswer('Normal')">Normal</button>
+      </ion-col>
+      <ion-col class="answer-button-col" width-33>
+        <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="selectAnswer('Normal')">Undetermined</button>
+      </ion-col>
+      <ion-col class="answer-button-col" width-33>
+        <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="answerActionSheet('Enlarged')">Enlarged</button>
       </ion-col>
     </ion-row>
   </ion-grid>
- 
-</ion-content>
-
-
-
-<ion-footer id="test-footer">
-  <p class="answer-info" align="center"  margin-left="20px" margin-right="20px"> Select Case Answer </p>
-   <ion-toolbar>
-    <!--<ion-grid >-->
-      <ion-row>
-
-        <ion-col>
-          <ion-buttons align="center">
-            <button  ion-button align="center" class="test-button" outline align="center"  color="primary" (click)="selectAnswer('Enlarged')">Enlarged</button>
-          </ion-buttons>
-        </ion-col>
-
-        <ion-col>
-          <ion-buttons   align="center" >
-            <button ion-button align="center" class='test-button' outline color="primary" (click)="selectAnswer('Normal')">Normal</button>
-          </ion-buttons>
-        </ion-col>
-
-       </ion-row>
-      <!--</ion-grid>-->
-      </ion-toolbar>
-      </ion-footer>
-
-
+</ion-footer>

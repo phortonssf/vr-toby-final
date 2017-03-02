@@ -1,61 +1,70 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
-import { DateComponent } from '../components/date/date';
-
-//  Providers
-import { RestTests } from '../providers/rest-tests'; 
-import { RestUser } from  '../providers/rest-user';
-import { TabsService } from  '../providers/tabs-service';
-
-// Image Plugin
 import { GalleryModal } from 'ionic-gallery-modal';
 import { ZoomableImage } from 'ionic-gallery-modal';
-//  Pages
-import { TestViewPage } from '../pages/test-view/test-view';
-import { LandingPage } from '../pages/landing/landing';
-import { SamplePage } from '../pages/sample/sample';
-import { ResultsPage } from '../pages/results/results';
+//Components
+import { MyApp } from './app.component';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
+import { Storage } from '@ionic/storage';
+//Pages
+import { AboutPage } from '../pages/about/about';
+import { AccountPage } from '../pages/account/account';
+import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { RegisterPage } from '../pages/register/register';
-import { TestResultsPage } from '../pages/test-results/test-results';
+import { LoginPage } from '../pages/login/login';
 import { QuestionsReviewPage } from '../pages/questions-review/questions-review';
+import { RegisterPage } from '../pages/register/register';
+import { ResultsPage } from '../pages/results/results';
+import { SupportPage } from '../pages/support/support';
+import { TabsPage } from '../pages/tabs/tabs';
+import { TestResultsPage } from '../pages/test-results/test-results';
 import { TestReviewPage } from '../pages/test-review/test-review';
+import { TestViewPage } from '../pages/test-view/test-view';
+import { TutorialPage } from '../pages/tutorial/tutorial';
+import { TutorialTestPage } from '../pages/tutorial-test/tutorial-test';
+//Services
+import { UserService } from './../providers/user-service';
+import { TestService } from './../providers/test-service';
 
-const injections = [
-    MyApp,
-    LandingPage,
-    RegisterPage,
-    ResultsPage,
-    HomePage,
-    TabsPage,
-    GalleryModal,
-    ZoomableImage,
-    TestViewPage,
-    ZoomableImage,
-    SamplePage,
-    TestResultsPage,
-    QuestionsReviewPage,
-    TestReviewPage 
-    ]
+const decs = [
+  MyApp,
+  AboutPage,
+  AccountPage,
+  ContactPage,
+  GalleryModal,
+  HomePage,
+  LoginPage,
+  QuestionsReviewPage,
+  RegisterPage,
+  ResultsPage,
+  SupportPage,
+  TabsPage,
+  TestViewPage,
+  TestResultsPage,
+  TestReviewPage,
+  TutorialPage,
+  TutorialTestPage,
+  ZoomableImage
+]
 
 @NgModule({
-  declarations: [injections, ProgressBarComponent, DateComponent],
+  declarations: [
+    decs,
+    ProgressBarComponent
+  ],
   imports: [
-    IonicModule.forRoot(MyApp, {
-      platforms: {
-        ios: {
-          swipeBackEnabled: false
-        }
-      }
-    })
+    IonicModule.forRoot(MyApp)
+    //, { scrollAssist: false, autoFocusAssist: false }
+    
   ],
   bootstrap: [IonicApp],
-  entryComponents: injections,
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler},
-  RestTests, RestUser, TabsService
-  ]
+  entryComponents: [
+    decs,
+    GalleryModal
+  ],
+  providers: [
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserService, TestService, Storage
+    ]
 })
 export class AppModule {}

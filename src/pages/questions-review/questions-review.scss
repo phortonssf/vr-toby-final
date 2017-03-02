@@ -1,12 +1,14 @@
 page-questions-review {
-  .wrong{
+    .wrong {
         color: #af0c0c;
     }
-    .right{
+    .right {
         color: #61c942;
     }
-    .scroll-content{
-        height: 100%;
+    .scroll-content {
+        height: 80%;
     }
-
+    #questions-header {
+        border-bottom: solid grey;
+    }
 }

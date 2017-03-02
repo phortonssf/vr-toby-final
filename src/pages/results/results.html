@@ -1,41 +1,23 @@
 <ion-header>
   <ion-navbar>
-    <ion-title align="center"> Test History </ion-title>
-    <ion-buttons end>
-     
-      <button ion-button icon-only (click)="logoutConfirm()">
-        <ion-icon name="exit"></ion-icon>
-      </button>
-    </ion-buttons>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Test History
+    </ion-title>
   </ion-navbar>
-  <!--<h2 align="center"> Your Test Results </h2>-->
 </ion-header>
 
 
 <ion-content>
-   <h4 align="center"> Click On A Test To Review</h4>
-  <ion-card *ngFor=" let test of completedTests" (click)="reviewTest(test)">
-    <ion-card-header align="center">
-      <h2 align="center"> {{ test.title }}</h2>
-    <h5> {{ test.totalCorrect }} Cases Correct </h5>
-    <!--<date [myDate]="test.createDate"></date>-->
-    </ion-card-header>
-    <ion-card-content>
-      <progress-bar [progress]="test.loadProgress"></progress-bar>
-   
-    </ion-card-content>
-    
-  </ion-card>
+  <img [hidden]="!showResults" src="assets/img/no-data.gif"/>
+  <h4 align="center" [hidden]="showResults" color="dark">Click On A Test To Review</h4>
+  <ion-list [hidden]="showResults">
+      <ion-item *ngFor=" let test of completedTests" (click)="reviewTest(test)">
+        <h5>Date: {{test.createDate | date:"MM/dd/yyyy"}}</h5>
+        <h5>Class: {{test.title}} </h5>
+        <progress-bar [progress]="test.loadProgress"></progress-bar>
+      </ion-item>
+  </ion-list>
 </ion-content>
-
-<!--<ion-content>-->
-<!--  <ion-card>-->
-<!--    <ion-card-header>-->
-      
-<!--    </ion-card-header>-->
-<!--    <ion-card-content>-->
-<!--      <canvas class='chart' #doughnutCanvas></canvas>-->
-<!--    </ion-card-content>-->
-<!--  </ion-card>-->
-  
-<!--</ion-content>-->

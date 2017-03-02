@@ -1,45 +1,58 @@
 <ion-header>
   <ion-navbar>
-    <ion-title align="center">VR-Toby</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="logoutConfirm()">
-        <ion-icon name="exit"></ion-icon>
-      </button>
-    </ion-buttons>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title id="home-title" align="center">
+      Home
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-grid class="view-wrapper">
+    <ion-row class="test-row">
+      <ion-col>
+        <!--<p align="center" class="whitecard niceborder"> </p>-->
+        <p align="center" class="whitecard niceborder"> VR-Toby is a deep machine learning system. Select a quiz and identify where the hearts displayed are enlarged or not. Your answers will help the AI learn.</p>
+      </ion-col>
+      <ion-col>
 
-  <!-- <ion-card class="card" *ngFor="let test of tests" (click)="takeTest(test)">-->
-  <!--   <ion-card-header align="center">-->
-  <!--    {{ test.title }}-->
-  <!--  </ion-card-header>-->
-  <!--  <ion-card-content align="center">-->
-  <!--    {{ test.description }}-->
-  <!--  </ion-card-content>-->
-  <!--</ion-card>-->
-  <p align="center" class="whitecard niceborder"> VR-Toby is a deep machine learning system. Select a quiz and identify where the hearts displayed are enlarged or not. Your answers will help the AI learn.
-</p >
-  
-  <ion-list>
-    <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
-      <ion-thumbnail>
-        <img src="assets/img/homeIcon-1.png" [navPush]="pushPage">
-      </ion-thumbnail>
-      <h2>Level {{$index + 1}}</h2>
-      <h3>{{test.title}}</h3>
-      <h3>{{8}}/{{10}}</h3>
-    </ion-item>
-    
-    <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
-      <ion-thumbnail>
-        <img src="assets/img/homeIcon-2.png" [navPush]="pushPage">
-      </ion-thumbnail>
-      <h2>Level {{$index + 2}}</h2>
-      <h3>{{test.title}}</h3>
-      <h3>{{8}}/{{10}}</h3>
-    </ion-item>
-  </ion-list>
- 
+        <ion-list *ngFor="let unfinishedTest of unfinishedTests; let $index = index;" (click)="resumeTest(unfinishedTest)" no-lines>
+          <ion-item *ngIf="unfinishedTests.length > 0">
+            <h3> Resume Test </h3>
+            <ion-thumbnail>
+              <img src="assets/img/homeIcon-2.png" [navPush]="pushPage">
+            </ion-thumbnail>
+            <h3> {{ unfinishedTest.title }} </h3>
+            <h4> {{ unfinishedTest.userAnswerIds.length }} / {{ unfinishedTest.totalCount }} </h4>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col *ngIf=" numOfUnfinishedTests == undefined">
+        <ion-list>
+          <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
+            <ion-thumbnail>
+              <img src="assets/img/homeIcon-1.png" [navPush]="pushPage">
+            </ion-thumbnail>
+            <h2>Level {{$index + 1}}</h2>
+            <h3>{{test.title}}</h3>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col *ngIf=" numOfUnfinishedTests > 0 ">
+        <ion-list style=" opacity: .3;">
+          <ion-item *ngFor="let test of tests; let $index = index;" no-lines>
+            <ion-thumbnail>
+              <img src="assets/img/homeIcon-1.png" [navPush]="pushPage">
+            </ion-thumbnail>
+            <h2>Level {{$index + 1}}</h2>
+            <h3>{{test.title}}</h3>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

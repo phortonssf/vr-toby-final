@@ -1,5 +1,47 @@
-test-review {
- 
-    
-   
+page-test-review {
+    .no-scroll .scroll-content {
+        overflow: hidden;
+    }
+    .selected-img-tr {
+        flex: 1.3;
+    }
+    ion-grid {
+        justify-content: center;
+        align-items: center;
+    }
+    img {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #flex-row {
+        max-width: 600px;
+        flex-flow: row wrap;
+        //flex-direction: wrap;
+        justify-content: space-between;
+    }
+    #main-img-tr {
+        border-radius: 10px;
+        flex-basis: 90%;
+    }
+    .thumbnails-tr {
+        flex: 1;
+        flex-basis: 70px;
+        border-radius: 5px;
+        box-shadow: 3px 3px 3px grey;
+    }
+    #bottom-row {
+        flex-direction: column;
+    }
+    ion-app.ios [margin-right],
+    ion-app.ios [margin-right] .scroll-content {
+        margin-top: 2px;
+        margin-right: 16px;
+    }
+    #testreview-footer {
+        border-top: 5px solid grey;
+    }
+    .thumbnail-highlight {
+        box-shadow: 5px 5px 5px grey;
+    }
 }

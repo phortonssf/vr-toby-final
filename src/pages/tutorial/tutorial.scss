@@ -1,0 +1,85 @@
+.ios,
+.md {
+  page-tutorial {
+    #toby-container {
+      width: 60vw;
+      height: auto;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h2 {
+      margin-top: -0rem;
+    }
+    @media screen and (orientation:portrait) {
+      .toolbar-background {
+        background: transparent;
+        border-color: transparent;
+      }
+      #toby-img,
+      #toby-img {
+        width: 70% !important;
+        display: block;
+        margin: auto;
+      }
+      ion-toolbar {
+        background: transparent;
+      }
+      .imageBorder {
+        border-bottom: black solid 1px;
+      }
+      .slide-zoom {
+        height: 100%;
+      }
+      .slide-image {
+        max-height: 50%;
+        max-width: 60%;
+        margin: 36px 0;
+      }
+      b {
+        font-weight: 500;
+      }
+      p {
+        margin-top: -0rem;
+        padding: 0 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #60646B;
+        b {
+          color: #000000;
+        }
+      }
+    }
+    @media screen and (orientation:landscape) {
+      .toolbar-background {
+        background: transparent;
+        border-color: transparent;
+      }
+      ion-toolbar {
+        background: transparent;
+      }
+      .imageBorder {
+        border-bottom: black solid 1px;
+      }
+      .slide-zoom {
+        height: 100%;
+      }
+      .slide-image {
+        max-height: 50%;
+        max-width: 60%;
+      }
+      b {
+        font-weight: 500;
+      }
+      p {
+        margin-top: -0rem;
+        padding: 0 10px;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #60646B;
+        b {
+          color: #000000;
+        }
+      }
+    }
+  }
+}

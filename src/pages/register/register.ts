@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
-
+import { NavController, AlertController, Platform, App } from 'ionic-angular';
 //Pages
-
 import { TabsPage } from '../tabs/tabs';
 //Providers
-import { RestUser} from '../../providers/rest-user';
+import { UserService } from '../../providers/user-service';
 
 @Component({
   selector: 'page-register',
@@ -17,34 +15,52 @@ export class RegisterPage {
   user = {
     firstName: "",
     lastName: "",
+    age: "",
+    occupation: "",
     email: "",
     password: ""
   };
-  
-  constructor(public _nav: NavController, public _restUser: RestUser,
-           public _alert: AlertController) {}
- // Invoked by Register button, registers new user on backend
+
+  constructor(
+    public navCtrl: NavController,
+    public userService: UserService,
+    public alertCtrl: AlertController,
+    public platform: Platform,
+    public app: App)
+  {}
+
+  checkPlatform(){
+   console.log("hello", this.platform.is('core'))
+    //this.app._setDisableScroll(true);
+    if( this.platform.is('core')) {
+      this.app._setDisableScroll(true);
+    }
+    if( this.platform.is('android')){
+      console.log('Platform = Android');
+      this.app._setDisableScroll(true);
+    }
+  }
+  //Invoked by Register button, registers new user on backend
   registerForm(form) {
-   // console.log("form: ", form)
-    //if form is in valid 
-    if(form.invalid) 
+    if(form.invalid)
       return this.invalidFormAlert();
-    //Invokes SSFUserRest service
-    this._restUser.register(this.user)
+    this.userService.register(this.user)
       .map(res => res.json ())
       .subscribe(res => {
         window.localStorage.setItem('userToken', res.token);
         window.localStorage.setItem('userId', res.id);
-        this._nav.setRoot(TabsPage);
+        window.localStorage.setItem('email', this.user.email);
+        window.localStorage.setItem('userName', this.user.email);
+        this.navCtrl.setRoot(TabsPage);
       }, err => {
-        if ( err.status == 422){
-          this.emailInUseAlert()
+        if (err.status == 422){
+          this.emailInUseAlert();
       }
     });
   }
-  
+
   emailInUseAlert() {
-    let alert = this._alert.create({
+    let alert = this.alertCtrl.create({
       title: 'Error',
       subTitle: 'Email is already in use',
       buttons: ['Dismiss']
@@ -53,12 +69,12 @@ export class RegisterPage {
   }
 
   invalidFormAlert() {
-    let alert = this._alert.create({
+    let alert = this.alertCtrl.create({
       title: 'Error',
       subTitle: 'Please Fill Out All Fields',
       buttons: ['Dismiss']
     });
     alert.present();
   }
-  
+
 }

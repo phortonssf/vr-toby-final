@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, Nav, NavParams, App, Tabs } from 'ionic-angular';
+import { NavController, Nav, NavParams } from 'ionic-angular';
 // Providers
-import { RestUser} from '../../providers/rest-user';
-import { RestTests } from '../../providers/rest-tests';
-import { TabsService } from '../../providers/tabs-service';
+import { TestService } from '../../providers/test-service';
+import { UserService } from '../../providers/user-service';
 //Pages
 import { TestReviewPage } from '../test-review/test-review';
 import { TabsPage } from '../tabs/tabs';
@@ -13,8 +12,6 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'test-results.html'
 })
 export class TestResultsPage {
-tab:Tabs;
- 
   answers: any[] = [];
   questions: any[] = [];
   correctNum: number = 0;
@@ -25,61 +22,61 @@ tab:Tabs;
   userToken: string = "";
   userId: string = "";
   testTitle: string = "";
+  testId: string = ""
   
-  constructor(public _navCtrl: NavController, public _navP: NavParams,
-    public restUser: RestUser, public restTest: RestTests, private _app: App,
-    private _nav: Nav, public tabs: TabsService) {
-        
-    // this.tab = this._navCtrl.parent;
-  //   console.log("tab: ", this.tab)
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public userService: UserService, public testService: TestService,
+    public nav: Nav)
+  {
     //Get data passed from previous page with navParams
-    this.answers = this._navP.get("answers");
-    this.testTitle = this._navP.get("testTitle");
-    this.questions = this._navP.get("questions");
-    this.testTakenId =  this._navP.get("testTakenId");
+    this.answers = this.navParams.get("answers");
+    this.testTitle = this.navParams.get("testTitle");
+    this.questions = this.navParams.get("questions");
+    this.testTakenId =  this.navParams.get("testTakenId");
+    this.testId = this.navParams.get("testId");
     this.totalQuestions = this.questions.length;
     this.userToken = window.localStorage.getItem('userToken');
     this.userId = window.localStorage.getItem('userId');
     
-   //Compares user answers to the answers of the question
-    for(var i = 0; i < this.totalQuestions; i++){
-      this.questions[i].answerGiven = this.answers[i]
+    //Compares user answers to the answers of the question
+    for(var i = 0; i < this.totalQuestions; i++) {
+    this.questions[i].answerGiven = this.answers[i]
       if(this.questions[i].answer === this.answers[i]){
         this.correctNum++
-      }else{
+      }
+      else {
         this.wrongNum++
       }
     }
-  
+
     let today = new Date();
-    let completeTestData = 
+    let completeTestData =
       {
+        "testId": this.testId,
         "userId": this.userId,
         "createDate": today,
         "totalCorrect": this.correctNum,
         "totalCount": this.totalQuestions,
         "id": this.testTakenId
       };
-     
-     this.restTest.completeTest( completeTestData, this.userToken)
-     .map( res => res.json())
-      .subscribe( res => {
-      }, err => {
-        alert("Error")
-        console.log(err)
-      })
+
+    this.testService.completeTest( completeTestData, this.userToken)
+    .map( res => res.json())
+    .subscribe( res => {
+      console.log("complete test Data", completeTestData)
+    }, err => {
+      alert("Error this is completeTest error")
+      console.log(err)
+    })
+
   }
 
-  closeTestResult(){ console.log(this.tab)
-  // this._app.setRootNav.setRoot(TabsPage, {tabIndex: 1});
-    this._navCtrl.setRoot(TabsPage,{
-      "tabIndex": 1
-    });
+  closeTestResult(){
+    this.navCtrl.setRoot(TabsPage);
   }
-  
-   reviewQuestion = function ( question, questionIndex ) {
-    console.log("question", questionIndex)
-    this._nav.push(TestReviewPage, {
+
+  reviewQuestion = function (question, questionIndex) {
+    this.navCtrl.push(TestReviewPage, {
       "testTitle": this.testTitle,
       "questions": this.questions,
       "currentQuestion": questionIndex

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ModalController, NavController, NavParams, AlertController, App  } from 'ionic-angular';
+import { ModalController, NavController, NavParams, AlertController, 
+App, Platform, Events, ActionSheetController } from 'ionic-angular';
 import { GalleryModal } from 'ionic-gallery-modal';
 // Providers
-import { RestTests } from '../../providers/rest-tests';
-import { RestUser } from '../../providers/rest-user';
-import { TabsService } from '../../providers/tabs-service';
+import { TestService } from '../../providers/test-service';
+import { UserService } from '../../providers/user-service';
 //Pages
 import { TestResultsPage } from '../test-results/test-results';
 import { TabsPage } from '../tabs/tabs';
@@ -14,9 +14,8 @@ import { TabsPage } from '../tabs/tabs';
   templateUrl: 'test-view.html'
 })
 export class TestViewPage {
-  
+
   private photos: any[] = [];
-  testId: any;
   public imageIds: any[] = [];
   currentIndex: any;
   userToken: string = "";
@@ -24,67 +23,185 @@ export class TestViewPage {
   questions: any[] = [];
   currentQuestion: number = 0;
   test: any;
+  loadProgress: number;
   answers: any[] = [];
   viewPic: string;
   imageIndex: any = 0;
   testTitle: string = "";
-  //length: number = this.questions[this.currentQuestion].imageIds.length;
-  
-  constructor(public _nav: NavController, public _modal: ModalController,
-    public _restTests: RestTests, public _restUser: RestUser,
-    public _navP: NavParams, public alertCtrl: AlertController, public tabs: TabsService,
-    private _app: App) 
+  testId: string = "";
+  currentImg: any = undefined;
+  view:any;
+  zoom: string = 'Zoom';
+  select: string = 'Grade Img';
+  heart: any = ['Grade Left', 'Grade Right', 'Grade Vd'];
+
+  constructor(public navCtrl: NavController, public modal: ModalController,
+    public testService: TestService, public userService: UserService,
+    public navParams: NavParams, public alertCtrl: AlertController,
+    private app: App, public platform: Platform,
+    public events: Events, public actionSheetCtrl: ActionSheetController)
   {
-    
-    //Get data from _navP pass from previous page with _nav
-    this.testId =  this._navP.get("testId");
-    this.testTakenId = this._navP.get("testTakenId");
-    this.questions = this._navP.get("questions");
-    this.testTitle = this._navP.get("testTitle");
-    this.currentQuestion = this._navP.get("currentQuestion");
-    this.answers = this._navP.get("answers");
+
+    //Get data from params pass from previous page with navCtrl
+    this.testId =  this.navParams.get("testId");
+    this.testTakenId = this.navParams.get("testTakenId");
+    this.questions = this.navParams.get("questions");
+    this.testTitle = this.navParams.get("testTitle");
+    this.currentQuestion = this.navParams.get("currentQuestion");
+    this.answers = this.navParams.get("answers");
     //Local staorage
     this.userToken = window.localStorage.getItem('userToken');
     //gets photos
-    console.log(this.questions[this.currentQuestion].imgArray)
-    this.createPhotos(this.questions[this.currentQuestion].imgArray); 
-    
+    this.createPhotos(this.questions[this.currentQuestion].imgArray);
+    console.log("this.testId", this.testId)
+    if(this.questions.length > 0) {
+      this.loadProgress = 100 * this.currentQuestion  / this.questions.length;
+    }
+    this.checkViewLandscape();
+    this.checkViewPortait();
   }
+  
   ionViewDidEnter(){
-    this._app._setDisableScroll(true);
+   // this.app._setDisableScroll(true);
   }
+  
+  checkPlatform(){
+   console.log("hello", this.platform.is('core'))
+    //this.app._setDisableScroll(true);
+    if( this.platform.is('core')) {
+      this.app._setDisableScroll(true);
+    }
+    if( this.platform.is('android')){
+      console.log('Platform = Android');
+      this.app._setDisableScroll(true);
+    }
+  }
+  
+  
+  
+  //Actionsheet for image grade
+  presentActionSheet(i) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Make your selection',
+      buttons: [
+        {
+          text: 'Normal',
+          handler: () => {
+            this.heart[i] = 'Normal';
+            console.log('Normal clicked');
+          }
+        },{
+          text: 'Enlarged',
+          handler: () => {
+            this.heart[i] = 'Enlarged';
+            console.log('Enlarged clicked');
+          }
+        },{
+          text: 'Undetermined',
+          handler: () => {
+            this.heart[i] = 'Undetermined';
+            console.log('Undetermined clicked');
+          }
+        },{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+  
+  //Actionsheet when 'Enlarged' is selected
+  answerActionSheet(x) {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Type on enlargement',
+      buttons: [
+        {
+          text: 'Left Enlarged',
+          handler: () => {
+            this.selectAnswer(x);
+            console.log('Left Enlarged clicked');
+          }
+        },{
+          text: 'Generally Enlarged',
+          handler: () => {
+            this.selectAnswer(x);
+            console.log('Generally Enlarged clicked');
+          }
+        },{
+          text: 'Right Enlarged',
+          handler: () => {
+            this.selectAnswer(x);
+            console.log('Right Enlarged clicked');
+          }
+        },{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  //Check View
+  checkViewLandscape(){
+    return this.platform.isLandscape();
+  }
+
+  //Check View
+  checkViewPortait(){
+    return this.platform.isPortrait();
+  }
+
  //Select image to View
   selectImage(img, i) {
     this.viewPic = img;
+    this.currentImg = img;
+    console.log("hello img", img)
     this.imageIndex = i;
   }
 
-//Creates Modal on click of the main image.
-  imageZoom() {
-    let modal = this._modal.create(GalleryModal, {
+  //Creates Modal on click of the main image.
+  imageZoom(index) {
+    this.imageIndex = index;
+    let modal = this.modal.create(GalleryModal, {
       photos: this.photos,
       initialSlide: this.imageIndex
     });
     modal.present();
   }
 
-//Creates Photos to be displayed for the current question
- createPhotos(questionImages) {
-   console.log("creatphoto: ", questionImages)
-  for (let i = 0; i < questionImages.length; i++) {
+  //Creates Photos to be displayed for the current question
+  createPhotos(questionImages) {
+    for (let i = 0; i < questionImages.length; i++) {
       this.photos.push({
-        url: `https://vr-toby-jbrownssf.c9users.io:8080/api/ImageContainer/image-container/download/` + questionImages[i],
+        url: `https://vrtoby.softbrew.com/api/ImageContainer/image-container/download/` + questionImages[i],
       });
     }
     this.viewPic = this.photos[0].url;
-  };
+    console.log(this.photos);
+  }
+  
+  //Alert if answer is incomplete
+  showAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Answer is incomplete',
+      subTitle: "Please check to see if you've scored each image then re-submit." ,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
-//Logs user out
-
-closeTest() {
+  //Logs user out
+  closeTest() {
     let confirm = this.alertCtrl.create({
       title: 'Exit the current test?',
-     // message: 'Your progess will be saved and you can resume at a later time',
       buttons: [
         {
           text: 'Cancel',
@@ -96,36 +213,37 @@ closeTest() {
           text: 'Exit',
           handler: () => {
             console.log('Agree clicked');
-           this._nav.setRoot(TabsPage);
+            this.navCtrl.setRoot(TabsPage);
           }
         }
       ]
     });
     confirm.present();
   }
-  
 
-  /*On click from user on asnwer button updates answer if one already exists for 
+  /*On click from user on answer button updates answer if one already exists for
   the user on this question or test or creates*/
   selectAnswer(answerPicked){
+  
     this.answers[this.currentQuestion]=answerPicked
     let answerData ={
       "questionId": this.questions[this.currentQuestion].id,
       "answer": answerPicked,
       "testTakenId": this.testTakenId
     }
-    this._restTests.saveAnswer(answerData, this.userToken)
+    this.testService.saveAnswer(answerData, this.userToken)
     .map(res => {
     // If request fails, throw an Error that will be caught
       if(res.status < 200 || res.status >= 300) {
         throw new Error('This request has failed ' + res.status);
       } else {
-           // If everything went fine, return the response
+        // If everything went fine, return the response
         return res.json();
         }
     })
     .subscribe( res => {
-      nextQuestion(this.testTitle, this._nav, this.currentQuestion, this.questions, this.testTakenId, this.answers)
+      console.log("hellos", this.testId)
+      nextQuestion(this.testId, this.testTitle, this.navCtrl, this.currentQuestion, this.questions, this.testTakenId, this.answers)
     }, err => {
         alert("Error Server Could Not Be Found. Try again Later.")
         console.log(err)
@@ -133,14 +251,13 @@ closeTest() {
   }
 }
 
-
-
 //handles what data to send to the next question if last question goes to TestResultsPage
-let nextQuestion = function(title,  nav, pageNum, question, takenId, answer){
+let nextQuestion = function(testid, title, nav, pageNum, question, takenId, answer){
     //if last question go to TestResultsPage
     if( pageNum === question.length-1){
-      nav.setRoot(TestResultsPage, 
-        {
+      nav.setRoot(TestResultsPage,
+        { 
+          "testId": testid,
           "answers": answer,
           "questions": question,
           "testTakenId": takenId,
@@ -149,7 +266,8 @@ let nextQuestion = function(title,  nav, pageNum, question, takenId, answer){
         //Go to nexst question with the data given in navCtrl
     }else{
       ++pageNum
-      nav.push( TestViewPage, { 
+      nav.push( TestViewPage, {
+        "testId": testid,
         "currentQuestion": pageNum,
         "questions": question,
         "testTakenId": takenId,

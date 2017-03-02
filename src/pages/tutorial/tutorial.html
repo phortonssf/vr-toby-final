@@ -1,0 +1,52 @@
+<ion-header no-border>
+  <ion-navbar>
+    <ion-buttons end *ngIf="showSkip">
+      <button ion-button (click)="startApp()" color="primary">Skip</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-bounce>
+  <ion-slides (ionSlideWillChange)="onSlideChangeStart($event)" pager>
+
+    <ion-slide>
+      <div id="toby-container">
+        <img id="toby-img" src="assets/img/tutorial-slide-1.gif" class="slide-image" />
+      </div>
+      <h2 class="slide-title">
+        Welcome to <b>VR-Toby</b>
+      </h2>
+      <p>
+        <b>VR-Toby</b> is a deep machine learning system. Select a test and identify where the hearts displayed are enlarged or not. Your answers will help the AI learn.
+      </p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/tutorial-slide-test.png" class="slide-image imageBorder" />
+      <h2 class="slide-title">What is a test?</h2>
+      <p>A test consist of multiple cases that have previously been scored as being normal or enlarged.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/tutorial-slide-case.png" class="slide-image imageBorder" />
+      <h2 class="slide-title">Cases</h2>
+      <p>Each case contains 1 or more x-rays that you will be asked to score. Tap the large x-ray in order to zoom and scroll to get a closer look. Before submitting your answer, if enlarged, please select any or all of the x-rays that led you to that conslusion.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/tutorial-slide-results.png" class="slide-image imageBorder" />
+      <h2 class="slide-title">Results</h2>
+      <p>After completing the test you will be given your score to see how well you're able to detect cases of enlarged hearts.</p>
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/img/tutorial-slide-last.png" class="slide-image imageBorder" />
+      <h2 class="slide-title">Ready to Get Started?</h2>
+      <button ion-button icon-right large clear (click)="startApp()">
+        <h2>Continue</h2>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

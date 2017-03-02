@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, App } from 'ionic-angular';
-
 //Pages
 import { TestReviewPage } from '../test-review/test-review';
 import { ResultsPage } from '../results/results';
@@ -16,34 +15,33 @@ export class QuestionsReviewPage {
   totalCorrect: number = 0;
   totalQuestions: number = undefined;
   wrongNum: number = undefined;
-  //testNum: number = 10;
   testTakenId: string  = "";
   userToken: string = "";
   userId: string = "";
   testTitle: string = "";
-  
+
   constructor(
-    public _nav: NavController, 
-    public _navP: NavParams, 
-    public _alert: AlertController,
-    public _app: App
-  ) 
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public app: App
+  )
   {
     // this.config.swipeBackEnabled = false;
-    this.answers = this._navP.get("answers");
-    this.testTitle = this._navP.get("testTitle");
-    this.questions = this._navP.get("questions");
-    this.testTakenId =  this._navP.get("testTakenId");
-    this.totalCorrect =  this._navP.get("totalCorrect");
+    this.answers = this.navParams.get("answers");
+    this.testTitle = this.navParams.get("testTitle");
+    this.questions = this.navParams.get("questions");
+    this.testTakenId =  this.navParams.get("testTakenId");
+    this.totalCorrect =  this.navParams.get("totalCorrect");
     this.totalQuestions = this.questions.length;
     this.userToken = window.localStorage.getItem('userToken');
     this.userId = window.localStorage.getItem('userId');
   }
-  
+
   ionViewWillEnter(){
         gradeAnswers( this.questions, this.answers )
   }
-  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuestionsReviewPage');
     let length = this.questions.length
@@ -51,24 +49,23 @@ export class QuestionsReviewPage {
       this.questions[i].imgArray = this.questions[i].imageIds.split(",")
     }
   }
-  
+
   reviewQuestion = function ( question, questionIndex ) {
     //this._nav.push(TestReviewPage, {
-      this._app.getRootNav().setRoot( TestReviewPage,{
+      this.app.getRootNav().setRoot(TestReviewPage,{
       "testTitle": this.testTitle,
       "questions": this.questions,
       "currentQuestion": questionIndex
     })
   }
-  
+
   closeTestResult = function(){
-    this._nav.setRoot(ResultsPage)
+    this.navCtrl.setRoot(ResultsPage);
   }
-  
+
    closeTestConfirm() {
-    let confirm = this._alert.create({
+    let confirm = this.alertCtrl.create({
       title: 'Are you sure you want to close test?',
-      //message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
       buttons: [
         {
           text: 'Cancel',

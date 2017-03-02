@@ -1,0 +1,142 @@
+ion-app{
+    max-width: 900px;
+    margin: auto;
+    display: block;
+    position: relative;
+}
+
+ion-content  {
+    background-color: $background-color;
+    margin: auto;
+    display: flex;
+    
+}
+
+.back-button.show-back-button {
+    display: inline-block;
+    font-size: 1rem;
+}
+
+img {
+    border-radius: 10px;
+    display: block;
+}
+
+.view-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    max-width: 70vw;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15vh;
+}
+
+// .view-wrapper{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     max-width: 70vw;
+//     margin-right: auto;
+//     margin-left: auto;
+// }
+
+
+.button{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+
+    
+
+
+// ********* Android CSS ***************
+    
+    // Keyboard scroll up fix
+    .md .no-scroll .scroll-content{
+      // overflow: visible;
+        // position: absolute;
+        //margin-bottom: 0px;
+        padding-bottom: 0px !important;
+    }
+    
+     // form input valid border
+    .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+        border-bottom: none;
+        box-shadow: none;
+    }
+    
+    
+    
+    
+           //    ************* Small Screen ****************
+     @media screen and (min-width : 320px) and (max-width : 500px) {
+        #view-wrapper{
+            width: 100vw;
+            height: 100vh;
+        } 
+    
+        
+        #login-logo{
+            transform: translateY(-20%);
+            max-height: 110px;
+        }
+    }
+         
+@media screen and (min-width : 320px) and (max-width : 780px) 
+    and (orientation:landscape){
+        #view-wrapper{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #login-logo{
+            max-width: 60px;
+            margin-top: 0px;
+        }
+        #to-register{
+                transform: translateY(0%);
+        }
+        
+        #view-wrapper{
+            width: 100vw;
+            height: 100vh;
+        } 
+        
+        #form-col{
+            max-width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #bottom-row{
+            margin-top: 5vh;
+            flex-direction: row;
+        }
+        
+        #logo{
+            max-height: 110px;
+        }
+    }
+    
+    
+    // ***********Desktop and plus size screen 1024 plus width *************
+    @media screen and  (min-width : 1024px) {
+        .scroll-content{
+            display: flex;
+        }
+        #view-wrapper{
+            max-width: 600px;
+           // height: 100vh;
+           justify-content: center;
+           margin-left: auto;
+           margin-right: auto;
+        }
+        
+        
+    }
+    
+    
+// ************** IOS CSS *****************

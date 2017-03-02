@@ -1,0 +1,60 @@
+<ion-content font-size=".2em" class="no-scroll" background-color="#b3c2db" no-bounce>
+  <div id="fullscreen-flex">
+    <div id="content-wrapper">
+      <div class="login-wrapper">
+        <ion-grid>
+          <ion-row>
+            <ion-col id="logo-col">
+              <img id="login-logo" src="assets/img/tutorial-slide-ready.png" />
+            </ion-col>
+          </ion-row>
+
+          <!--Login Function-->
+
+
+          <ion-row id="main-row">
+            <ion-col id="form-col">
+              <form #loginForm="ngForm" (ngSubmit)="signinForm(loginForm)" novalidate>
+                <ion-row>
+                  <ion-col class="input-col">
+                    <ion-item class="top-input">
+                      <ion-label>Email</ion-label>
+                      <!--[(ngModel)]="user.email" sameAs ng-model="user.email"-->
+                      <ion-input name="email" type="email" [(ngModel)]="user.email" required></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col class="input-col">
+                    <ion-item class="bottom-input">
+                      <ion-label>Password</ion-label>
+                      <ion-input name="password" type="password" [(ngModel)]="user.password" required></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <!--Login Button-->
+
+                <button id="login-button" ion-button class="form-button" type="submit" block='true'>
+          Log In
+        </button>
+              </form>
+              <!-- Remember Me Checkbox -->
+              <ion-row id="bottom-row">
+                <ion-col id="remember-me-col">
+                  <ion-item style="border: none;" no-lines>
+                    <ion-label>Remember Me</ion-label>
+                    <ion-checkbox id="checkbox" type="boolean" name="rememberMe" [(ngModel)]="user.rememberMe" color="green"></ion-checkbox>
+                  </ion-item>
+                </ion-col>
+                <!--To Register View Button-->
+                <ion-col id="register-col">
+                  <button ion-button id="to-register" color="primary" text-align="center" align="center" (click)="register()">Need An Account?</button>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>

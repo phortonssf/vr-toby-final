@@ -1,126 +1,86 @@
-// http://ionicframework.com/docs/v2/theming/
-
-
-// App Global Sass
-// --------------------------------------------------
-// Put style rules here that you want to apply globally. These
-// styles are for the entire app and not just one component.
-// Additionally, this file can be also used as an entry point
-// to import other Sass files to be included in the output CSS.
-//
-// Shared Sass variables, which can be used to adjust Ionic's
-// default Sass variables, belong in "theme/variables.scss".
-//
-// To declare rules for a specific mode, create a child rule
-// for the .md, .ios, or .wp mode classes. The mode class is
-// automatically applied to the <body> element in the app.
-    ion-content{
-        // background: #304352; /* fallback for old browsers */
-        // background: -webkit-linear-gradient(to bottom, $topGradient , $bottomGradient); /* Chrome 10-25, Safari 5.1-6 */
-        // background: linear-gradient(to bottom, $topGradient , $bottomGradient); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
-        // drew's leet UI hax
-        background: #f8f8f8;
-    }
-    .scroll-content{
-         background-color: #f8f8f8;
-    }
-    .content-ios {
-        background: #f8f8f8;
-    }
-    
-    ion-navbar {
-        background: #304352; /* fallback for old browsers */
-        background: -webkit-linear-gradient(to bottom, $topGradient , $bottomGradient); /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to bottom, $topGradient , $bottomGradient); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
-    
-    .form-button{
-        background-color: #D7D2CC;
-        box-shadow: 5px 5px 5px #888888;
-    }
-    
-    .title {
-        font-family: 'Cinzel', serif;
-        font-size: 1em;
-    }
-   .tabs .tabbar {
-        background: transparent;
-    }
-   .top-input{
-       border-radius: 7px 7px 0px 0px;
-   }
-   
-   .bottom-input{ 
-        border-radius: 0px 0px  7px 7px;
-   }
-   
-
-   
-  
- 
- ion-tabs {
-     .tabbar {
-         background-color: #ddd !important;
-     }
- }
- 
-
- 
- 
- .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
-    border-bottom-color: #ffffff;
-    border-top-color:  #ffffff;
-    box-shadow: inset 0 -1px 0 0 #32db64;
+ion-app {
+    max-width: 900px;
+    margin: auto;
+    display: block;
+    position: relative;
 }
 
-//  .scroll-content {
-// 	margin-bottom: 110px !important;
-	
+// img {
+//     border-radius: 7px;
 // }
-
-
-    .answers{
-        border-bottom: 2px solid #a5a5a5;
-    }
-    
-    #chose{
-        color: #000000;
-    }
-    
-    #correct{
-        color: #0caf55;
-        font-size: 1.1em;
-        font-weight: bold;
-    }
-    
-    #incorrect{
-        color: #af0c0c;
-        font-size: 1.1em;
-        font-weight: bold;
-    }
-    
-    #tap{
-         margin-top: 2px;   
-    }
-    
-    .reviewAnswers{
-        margin-top: 10px;
-    }
-    .input-cover{
-         border: none !important;   
-    }
-    
-    .ion-ios-paper:before {
-    content: "\f472";
-    color: #247ac5;
+ion-content {
+    background-color: $background-color;
+    margin: auto;
 }
 
-.ion-ios-stats:before {
-    content: "\f21b";
-    color: #247ac5;
+.back-button.show-back-button {
+    display: inline-block;
+    font-size: 1rem;
 }
 
-.image{
-    background-color: #000000;
-}
+// img {
+//     border-radius: 10px;
+//     display: block;
+// }
+// // ********* Android CSS ***************
+// Keyboard scroll up fix
+//      // form input valid border
+//     .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+//         border-bottom: none;
+//         box-shadow: none;
+//     }
+//           //    ************* Small Screen ****************
+//      @media screen and (min-width : 320px) and (max-width : 500px) {
+//         #view-wrapper{
+//             width: 100vw;
+//             height: 100vh;
+//         } 
+//         #login-logo{
+//             transform: translateY(-20%);
+//             max-height: 110px;
+//         }
+//     }
+// @media screen and (min-width : 320px) and (max-width : 780px) 
+//     and (orientation:landscape){
+//         #view-wrapper{
+//             margin-left: auto;
+//             margin-right: auto;
+//         }
+//         #login-logo{
+//             max-width: 60px;
+//             margin-top: 0px;
+//         }
+//         #to-register{
+//                 transform: translateY(0%);
+//         }
+//         #view-wrapper{
+//             width: 100vw;
+//             height: 100vh;
+//         } 
+//         #form-col{
+//             max-width: 75%;
+//             margin-left: auto;
+//             margin-right: auto;
+//         }
+//         #bottom-row{
+//             margin-top: 5vh;
+//             flex-direction: row;
+//         }
+//         #logo{
+//             max-height: 110px;
+//         }
+//     }
+//     // ***********Desktop and plus size screen 1024 plus width *************
+//     @media screen and  (min-width : 1024px) {
+//         .scroll-content{
+//             display: flex;
+//         }
+//         #view-wrapper{
+//             max-width: 600px;
+//           // height: 100vh;
+//           justify-content: center;
+//           margin-left: auto;
+//           margin-right: auto;
+//         }
+//     }
+// // ************** IOS CSS *****************
