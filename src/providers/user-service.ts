@@ -10,7 +10,7 @@ export class UserService {
   _favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
-  baseUrl: string = "https://vrtoby.softbrew.com/api/AppUsers/";
+  baseUrl: string = "https://vr-toby-jbrownssf.c9users.io:8080/api/AppUsers/";
 
   constructor(
     public http: Http,

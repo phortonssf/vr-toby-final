@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 export class TestService {
   questions: any;
   tests: any[] = [];
-  baseUrl = "https://vrtoby.softbrew.com/api/";
+  baseUrl = "https://vr-toby-jbrownssf.c9users.io:8080/api/";
 
   constructor(public http: Http) {
     console.log('Hello Tests Provider');

@@ -67,7 +67,7 @@ export class TestReviewPage {
   createPhotos(questionImages) {
     for (let i = 0; i < questionImages.length; i++) {
       this.photos.push({
-        url: `https://vrtoby.softbrew.com/api/ImageContainer/image-container/download/` + questionImages[i],
+        url: `https://vr-toby-jbrownssf.c9users.io:8080/api/ImageContainer/image-container/download/` + questionImages[i],
       });
     }
     this.viewPic = this.photos[0].url;
