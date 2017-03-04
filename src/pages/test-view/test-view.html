@@ -100,15 +100,20 @@
   </ion-toolbar>
   <ion-grid>
     <ion-row id="answer-row-tv">
-      <ion-col class="answer-button-col" width-33>
-        <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="selectAnswer('Normal')">Normal</button>
-      </ion-col>
-      <ion-col class="answer-button-col" width-33>
-        <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="selectAnswer('Normal')">Undetermined</button>
-      </ion-col>
-      <ion-col class="answer-button-col" width-33>
-        <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="answerActionSheet('Enlarged')">Enlarged</button>
+      <ion-col *ngFor='let answer of answerChoices; let i = index' class="answer-button-col">
+        <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="selectAnswer(answer)">{{answer}}</button>
       </ion-col>
     </ion-row>
+    <!--<ion-row id="answer-row-tv">-->
+    <!--  <ion-col class="answer-button-col" width-33>-->
+    <!--    <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="selectAnswer('Normal')">Normal</button>-->
+    <!--  </ion-col>-->
+    <!--  <ion-col class="answer-button-col" width-33>-->
+    <!--    <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="selectAnswer('Normal')">Undetermined</button>-->
+    <!--  </ion-col>-->
+    <!--  <ion-col class="answer-button-col" width-33>-->
+    <!--    <button class="answer-button-tv" ion-button small color="dark" align="center" (click)="answerActionSheet('Enlarged')">Enlarged</button>-->
+    <!--  </ion-col>-->
+    <!--</ion-row>-->
   </ion-grid>
 </ion-footer>

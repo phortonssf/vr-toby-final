@@ -88,14 +88,15 @@ export class HomePage {
   test taken record on backend that the user owns*/
   takeTest(clickedTest){
     let todaysDate = new Date()
-
+console.log(clickedTest.answerChoices);
     let userTest = {
       "userId": this.userId,
       "testId": clickedTest.id,
       "createDate": todaysDate,
       "totalCorrect": 99999,
       "totalCount":  clickedTest.questionIds.length,
-      "title": clickedTest.title
+      "title": clickedTest.title,
+      "answerChoices": clickedTest.answerChoices
      }
 
     this.testService.createUserTest( userTest , this.userToken )
@@ -119,7 +120,8 @@ export class HomePage {
           "questions": clickedTest.questionIds,
           "currentQuestion": 0,
           "answers": [],
-          "testTitle": clickedTest.title
+          "testTitle": clickedTest.title,
+          "answerChoices": clickedTest.answerChoices
         });
       }, err => {
         alert("Something went really wrong.");
@@ -140,7 +142,8 @@ export class HomePage {
     "questions": test.questionIds,
     "currentQuestion": test.answers.length,
     "answers": test.answers,
-    "testTitle": test.title
+    "testTitle": test.title,
+    "answerChoices": test.answerChoices
       })
   }
 

@@ -34,6 +34,8 @@ export class TestViewPage {
   zoom: string = 'Zoom';
   select: string = 'Grade Img';
   heart: any = ['Grade Left', 'Grade Right', 'Grade Vd'];
+  answerChoices: any = [];
+  actionSheetHeader: string = "Image Looks Like..."
 
   constructor(public navCtrl: NavController, public modal: ModalController,
     public testService: TestService, public userService: UserService,
@@ -49,6 +51,8 @@ export class TestViewPage {
     this.testTitle = this.navParams.get("testTitle");
     this.currentQuestion = this.navParams.get("currentQuestion");
     this.answers = this.navParams.get("answers");
+    this.answerChoices = this.navParams.get("answerChoices");
+    console.log(this.answerChoices);
     //Local staorage
     this.userToken = window.localStorage.getItem('userToken');
     //gets photos
@@ -76,43 +80,91 @@ export class TestViewPage {
       this.app._setDisableScroll(true);
     }
   }
+   
+  // for create array for thebuttons
+   /*
+ 
+    /*/
+    
+      //Actionsheet for image grade
+  presentActionSheet() {
+    let bleh = this;
+          let actionAnswerButtons = []
+    this.answerChoices.forEach(function(answer, index) {
+      actionAnswerButtons.push(
+        { text: answer,
+          handler: () => {
+            bleh.heart[index] = answer;
+            console.log("clicked", answer)
+          }
+          
+        }
+      )
+    });
+    actionAnswerButtons.push({
+      text: 'Cancel',
+      role: 'cancel',
+      handler: () => {
+        console.log('Cancel clicked');
+      }
+    })
+    let actionSheet = this.actionSheetCtrl.create({
+      title: this.actionSheetHeader,
+      buttons: actionAnswerButtons
+    });
+     actionSheet.present();  
+  }
+  
+  
+  //   let actionSheet = this.actionSheetCtrl.create({
+  //     title: this.actionSheetHeader,
+  //     buttons: this.actionAnswerButtons
+  //   });
+  //   actionSheet.present();
+  // }
+    
+    
+    
+    
+    
+  // */
   
   
   
   //Actionsheet for image grade
-  presentActionSheet(i) {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Make your selection',
-      buttons: [
-        {
-          text: 'Normal',
-          handler: () => {
-            this.heart[i] = 'Normal';
-            console.log('Normal clicked');
-          }
-        },{
-          text: 'Enlarged',
-          handler: () => {
-            this.heart[i] = 'Enlarged';
-            console.log('Enlarged clicked');
-          }
-        },{
-          text: 'Undetermined',
-          handler: () => {
-            this.heart[i] = 'Undetermined';
-            console.log('Undetermined clicked');
-          }
-        },{
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-  }
+  // presentActionSheet(i) {
+  //   let actionSheet = this.actionSheetCtrl.create({
+  //     title: this.actionSheetHeader,
+  //     buttons: [
+  //       {
+  //         text: data[1],
+  //         handler: () => {
+  //           this.heart[i] = data[1];
+  //           console.log(data[1] + 'clicked');
+  //         }
+  //       },{
+  //         text: data[2],
+  //         handler: () => {
+  //           this.heart[i] = data[2];
+  //           console.log(data[2] + 'clicked');
+  //         }
+  //       },{
+  //         text: data[3],
+  //         handler: () => {
+  //           this.heart[i] = data[3];
+  //           console.log(data[3] + 'clicked');
+  //         }
+  //       },{
+  //         text: 'Cancel',
+  //         role: 'cancel',
+  //         handler: () => {
+  //           console.log('Cancel clicked');
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   actionSheet.present();
+  // }
   
   //Actionsheet when 'Enlarged' is selected
   answerActionSheet(x) {
@@ -243,7 +295,7 @@ export class TestViewPage {
     })
     .subscribe( res => {
       console.log("hellos", this.testId)
-      nextQuestion(this.testId, this.testTitle, this.navCtrl, this.currentQuestion, this.questions, this.testTakenId, this.answers)
+      nextQuestion(this.testId, this.testTitle, this.navCtrl, this.currentQuestion, this.questions, this.testTakenId, this.answers, this.answerChoices)
     }, err => {
         alert("Error Server Could Not Be Found. Try again Later.")
         console.log(err)
@@ -252,7 +304,7 @@ export class TestViewPage {
 }
 
 //handles what data to send to the next question if last question goes to TestResultsPage
-let nextQuestion = function(testid, title, nav, pageNum, question, takenId, answer){
+let nextQuestion = function(testid, title, nav, pageNum, question, takenId, answer, answerChoices){
     //if last question go to TestResultsPage
     if( pageNum === question.length-1){
       nav.setRoot(TestResultsPage,
@@ -272,7 +324,8 @@ let nextQuestion = function(testid, title, nav, pageNum, question, takenId, answ
         "questions": question,
         "testTakenId": takenId,
         "answers": answer,
-        "testTitle": title
+        "testTitle": title,
+        "answerChoices": answerChoices
       })
     }
   }

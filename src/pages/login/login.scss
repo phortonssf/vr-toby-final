@@ -1,6 +1,7 @@
 page-login {
-    .no-scroll .scroll-content {
+    md .no-scroll .scroll-content {
         overflow: hidden;
+        padding-bottom: 0px;
     }
     .login-wrapper {
         margin-top: 5vh;
