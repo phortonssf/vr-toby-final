@@ -2,28 +2,19 @@ page-register {
     #register-title {
         margin-right: calc(100vw - 92vw);
     }
-    .scroll-content {
+    
+    // fixes android keyboard scroll
+    .no-scroll .scroll-content {
         background-color: #f8f8f8;
-    }
-    .md .no-scroll .scroll-content {
-        // overflow: visible;
-        // position: absolute;
-        //margin-bottom: 0px;
         padding-bottom: 0px !important;
     }
-    #view-wrapper {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        align-items: center;
-    }
-    #form-wrapper {
+  
+    #form-wrapper-rp {
         max-width: 400px;
-        width: 100vw;
+        width: 90vw;
         display: block;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: auto;     margin-right: auto;
+        // margin-top: 10vh;
         -webkit-animation: fadein 2s;
         /* Safari, Chrome and Opera > 12.1 */
         -moz-animation: fadein 2s;
@@ -48,16 +39,13 @@ page-register {
         flex: 1 1 auto;
     }
     .input-wrapper {
-        margin: .8em;
+        // margin: .8em;
         border: 1px solid #ced4d4;
         border-radius: 6px;
         padding-left: 10px;
     }
-    #register-button {
-        color: #171819;
-    }
+    #register-button {}
     .button-inner {
-        font-family: 'Cinzel', serif;
         font-size: 1.5em;
         font-weight: .2em;
     }

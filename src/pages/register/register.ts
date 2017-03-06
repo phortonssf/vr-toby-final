@@ -59,6 +59,7 @@ export class RegisterPage {
     });
   }
 
+// error for if email is in use during register
   emailInUseAlert() {
     let alert = this.alertCtrl.create({
       title: 'Error',
@@ -68,6 +69,7 @@ export class RegisterPage {
     alert.present();
   }
 
+// error handling for invalid form info
   invalidFormAlert() {
     let alert = this.alertCtrl.create({
       title: 'Error',

@@ -4,10 +4,9 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding background-color="#b3c2db">
-  <!--<img id="logo" src="assets/img/tutorial-slide-ready.png"/> -->
-  <div id="view-wrapper">
-    <div id="form-wrapper">
+<ion-content class="no-scroll" background-color="#b3c2db">
+  <div id="view-wrapper-rp">
+    <div id="form-wrapper-rp">
       <form #regForm="ngForm" (ngSubmit)="registerForm(regForm)" novalidate>
         <ion-list no-lines>
           <ion-item floating>
@@ -56,12 +55,12 @@
 
           <ion-item floating>
             <ion-label>Email</ion-label>
-            <ion-input name="email" type="email" placeholder="john@doe.com" [(ngModel)]="user.email" required></ion-input>
+            <ion-input name="email" type="email" [(ngModel)]="user.email" required></ion-input>
           </ion-item>
 
           <ion-item floating>
             <ion-label>Password</ion-label>
-            <ion-input name="password" type="password" placeholder="********" [(ngModel)]="user.password" required></ion-input>
+            <ion-input name="password" type="password" [(ngModel)]="user.password" required></ion-input>
           </ion-item>
 
 

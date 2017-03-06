@@ -22453,31 +22453,14 @@ page-register #register-title {
   margin-right: calc(100vw - 92vw);
 }
 
-page-register .scroll-content {
+page-register .no-scroll .scroll-content {
   background-color: #f8f8f8;
-}
-
-page-register .md .no-scroll .scroll-content {
   padding-bottom: 0px !important;
 }
 
-page-register #view-wrapper {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-page-register #form-wrapper {
+page-register #form-wrapper-rp {
   max-width: 400px;
-  width: 100vw;
+  width: 90vw;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -22515,18 +22498,12 @@ page-register .years-col {
 }
 
 page-register .input-wrapper {
-  margin: .8em;
   border: 1px solid #ced4d4;
   border-radius: 6px;
   padding-left: 10px;
 }
 
-page-register #register-button {
-  color: #171819;
-}
-
 page-register .button-inner {
-  font-family: 'Cinzel', serif;
   font-size: 1.5em;
   font-weight: .2em;
 }
