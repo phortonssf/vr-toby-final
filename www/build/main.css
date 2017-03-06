@@ -22789,14 +22789,6 @@ page-test-review .thumbnail-highlight {
   width: 100%;
 }
 
-.ios page-tutorial #toby-container,
-.md page-tutorial #toby-container {
-  width: 60vw;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .ios page-tutorial h2,
 .md page-tutorial h2 {
   margin-top: -0rem;
@@ -22807,14 +22799,6 @@ page-test-review .thumbnail-highlight {
   .md page-tutorial .toolbar-background {
     background: transparent;
     border-color: transparent;
-  }
-  .ios page-tutorial #toby-img,
-  .ios page-tutorial #toby-img,
-  .md page-tutorial #toby-img,
-  .md page-tutorial #toby-img {
-    width: 70% !important;
-    display: block;
-    margin: auto;
   }
   .ios page-tutorial ion-toolbar,
   .md page-tutorial ion-toolbar {
