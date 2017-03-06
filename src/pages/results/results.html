@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
+    <ion-title align='center'>
       Test History
     </ion-title>
   </ion-navbar>
@@ -11,13 +11,13 @@
 
 
 <ion-content>
-  <img [hidden]="!showResults" src="assets/img/no-data.gif"/>
+  <img [hidden]="!showResults" src="assets/img/no-data.gif" />
   <h4 align="center" [hidden]="showResults" color="dark">Click On A Test To Review</h4>
   <ion-list [hidden]="showResults">
-      <ion-item *ngFor=" let test of completedTests" (click)="reviewTest(test)">
-        <h5>Date: {{test.createDate | date:"MM/dd/yyyy"}}</h5>
-        <h5>Class: {{test.title}} </h5>
-        <progress-bar [progress]="test.loadProgress"></progress-bar>
-      </ion-item>
+    <ion-item *ngFor=" let test of completedTests" (click)="reviewTest(test)">
+      <h5>Date: {{test.createDate | date:"MM/dd/yyyy"}}</h5>
+      <h5>Class: {{test.title}} </h5>
+      <progress-bar [progress]="test.loadProgress"></progress-bar>
+    </ion-item>
   </ion-list>
 </ion-content>

@@ -22152,8 +22152,8 @@ page-home .scroll-content {
   display: flex;
 }
 
-page-home #home-title {
-  margin-right: calc(100vw - 92vw);
+page-home ion-title {
+  margin-right: 48px;
 }
 
 page-home .whitecard {
@@ -22163,7 +22163,7 @@ page-home .whitecard {
   left: 10vw;
   border-left: 3px solid #2456a5;
   border-right: 3px solid #2456a5;
-  font-size: 1rem;
+  font-size: 1.6rem;
   width: 100%;
   margin: auto;
   margin-bottom: 4vh;
@@ -22449,8 +22449,12 @@ page-questions-review #questions-header {
   border-bottom: solid grey;
 }
 
+page-questions-review ion-title {
+  margin-right: 48px;
+}
+
 page-register #register-title {
-  margin-right: calc(100vw - 92vw);
+  margin-right: 48px;
 }
 
 page-register .no-scroll .scroll-content {
@@ -22557,12 +22561,20 @@ page-results .scroll-content {
   height: 80%;
 }
 
+page-results h4 {
+  margin-top: 25px;
+}
+
 page-results img {
   max-width: 70vw;
   border: 0;
   display: block;
   margin: auto;
   margin-top: 10vh;
+}
+
+page-results ion-title {
+  margin-right: 48px;
 }
 
 .ios .md page-support img {
@@ -22580,6 +22592,10 @@ page-test-results .right {
 
 page-test-review .no-scroll .scroll-content {
   overflow: hidden;
+}
+
+page-test-review ion-title {
+  margin-left: 56px;
 }
 
 page-test-review .selected-img-tr {

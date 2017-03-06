@@ -115,56 +115,7 @@ export class TestViewPage {
      actionSheet.present();  
   }
   
-  
-  //   let actionSheet = this.actionSheetCtrl.create({
-  //     title: this.actionSheetHeader,
-  //     buttons: this.actionAnswerButtons
-  //   });
-  //   actionSheet.present();
-  // }
-    
-    
-    
-    
-    
-  // */
-  
-  
-  
-  //Actionsheet for image grade
-  // presentActionSheet(i) {
-  //   let actionSheet = this.actionSheetCtrl.create({
-  //     title: this.actionSheetHeader,
-  //     buttons: [
-  //       {
-  //         text: data[1],
-  //         handler: () => {
-  //           this.heart[i] = data[1];
-  //           console.log(data[1] + 'clicked');
-  //         }
-  //       },{
-  //         text: data[2],
-  //         handler: () => {
-  //           this.heart[i] = data[2];
-  //           console.log(data[2] + 'clicked');
-  //         }
-  //       },{
-  //         text: data[3],
-  //         handler: () => {
-  //           this.heart[i] = data[3];
-  //           console.log(data[3] + 'clicked');
-  //         }
-  //       },{
-  //         text: 'Cancel',
-  //         role: 'cancel',
-  //         handler: () => {
-  //           console.log('Cancel clicked');
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   actionSheet.present();
-  // }
+
   
   //Actionsheet when 'Enlarged' is selected
   answerActionSheet(x) {

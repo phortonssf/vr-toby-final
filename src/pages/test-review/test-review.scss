@@ -2,6 +2,9 @@ page-test-review {
     .no-scroll .scroll-content {
         overflow: hidden;
     }
+    ion-title {
+        margin-left: 56px;
+    }
     .selected-img-tr {
         flex: 1.3;
     }

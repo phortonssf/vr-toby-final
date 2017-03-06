@@ -3,7 +3,7 @@ import { NavController, NavParams, AlertController, App } from 'ionic-angular';
 //Pages
 import { TestReviewPage } from '../test-review/test-review';
 import { ResultsPage } from '../results/results';
-
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-questions-review',
@@ -44,14 +44,15 @@ export class QuestionsReviewPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad QuestionsReviewPage');
+    
+    //Creates arrary from img strings in questions
     let length = this.questions.length
     for (var i = 0; i < length; i++){
       this.questions[i].imgArray = this.questions[i].imageIds.split(",")
     }
   }
-
+  // sets root to testreview-page on app stack and passes in data with nav params
   reviewQuestion = function ( question, questionIndex ) {
-    //this._nav.push(TestReviewPage, {
       this.app.getRootNav().setRoot(TestReviewPage,{
       "testTitle": this.testTitle,
       "questions": this.questions,
@@ -59,8 +60,11 @@ export class QuestionsReviewPage {
     })
   }
 
+  
   closeTestResult = function(){
-    this.navCtrl.setRoot(ResultsPage);
+    this.navCtrl.setRoot(TabsPage, {
+      "tabIndex": 1
+    });
   }
 
    closeTestConfirm() {

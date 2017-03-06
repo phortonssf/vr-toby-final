@@ -1,19 +1,18 @@
 page-register {
     #register-title {
-        margin-right: calc(100vw - 92vw);
+        margin-right: 48px;
     }
-    
     // fixes android keyboard scroll
     .no-scroll .scroll-content {
         background-color: #f8f8f8;
         padding-bottom: 0px !important;
     }
-  
     #form-wrapper-rp {
         max-width: 400px;
         width: 90vw;
         display: block;
-        margin-left: auto;     margin-right: auto;
+        margin-left: auto;
+        margin-right: auto;
         // margin-top: 10vh;
         -webkit-animation: fadein 2s;
         /* Safari, Chrome and Opera > 12.1 */

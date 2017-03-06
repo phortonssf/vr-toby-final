@@ -54,7 +54,7 @@ export class HomePage {
         })
       }
     }, err => {
-      //this.loginAlert();
+      //this.errorAlertAlert();
     }
   );
 
@@ -74,7 +74,7 @@ export class HomePage {
   
    
   
-
+// error handing for getting tests
   loginAlert() {
     let alert = this.alertCtrl.create({
       title: 'Error',
@@ -128,7 +128,7 @@ console.log(clickedTest.answerChoices);
       });
   };
   
-  
+  // resumes the test and passes data to next page
   resumeTest( test ){
     let length = test.questionIds.length
       for (var i = 0; i < length; i++){
@@ -171,6 +171,7 @@ console.log(clickedTest.answerChoices);
     });
     confirm.present();
   }
+  
   //Log user out after agreeing to confirm alert
    logout(){
     this.userService.logout(window.localStorage.getItem('userToken'))

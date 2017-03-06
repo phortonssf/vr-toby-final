@@ -1,25 +1,26 @@
 page-results {
-
     .card {
-        background:rgba(0,0,0,0.0);
+        background: rgba(0, 0, 0, 0.0);
     }
-
     .chart {
         height: 100px !important;
         width: 100px !important;
-        color:  #af0c0c !important;
+        color: #af0c0c !important;
     }
-
-    .scroll-content{
+    .scroll-content {
         height: 80%;
     }
-
-    img {
-      max-width: 70vw;
-      border: 0;
-      display: block;
-      margin: auto;
-      margin-top: 10vh;
+    h4 {
+        margin-top: 25px;
     }
-
+    img {
+        max-width: 70vw;
+        border: 0;
+        display: block;
+        margin: auto;
+        margin-top: 10vh;
+    }
+    ion-title {
+        margin-right: 48px;
+    }
 }
