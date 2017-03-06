@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, App } from 'ionic-angular';
 //Pages
 import { TestReviewPage } from '../test-review/test-review';
-import { ResultsPage } from '../results/results';
 import { TabsPage } from '../tabs/tabs';
 
 @Component({

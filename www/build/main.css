@@ -22171,6 +22171,10 @@ page-home .whitecard {
   max-width: 500px;
 }
 
+page-home h3 {
+  margin-top: 4px !important;
+}
+
 page-home .label {
   text-align: center;
 }
@@ -22453,6 +22457,10 @@ page-questions-review ion-title {
   margin-right: 48px;
 }
 
+page-questions-review h3 {
+  margin-top: 3px !important;
+}
+
 page-register #register-title {
   margin-right: 48px;
 }
@@ -22590,12 +22598,8 @@ page-test-results .right {
   color: #61c942;
 }
 
-page-test-review .no-scroll .scroll-content {
-  overflow: hidden;
-}
-
-page-test-review ion-title {
-  margin-left: 56px;
+page-test-results h3 {
+  margin-top: 3px !important;
 }
 
 page-test-review .selected-img-tr {
@@ -22634,6 +22638,12 @@ page-test-review #main-img-tr {
   -webkit-flex-basis: 90%;
   -ms-flex-preferred-size: 90%;
   flex-basis: 90%;
+  display: block;
+  width: auto;
+  max-height: 50vh;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 3px 3px 5px 5px rgba(169, 169, 169, 0.4);
 }
 
 page-test-review .thumbnails-tr {
@@ -22644,7 +22654,12 @@ page-test-review .thumbnails-tr {
   -ms-flex-preferred-size: 70px;
   flex-basis: 70px;
   border-radius: 5px;
-  box-shadow: 3px 3px 3px grey;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 3px 3px 5px 5px rgba(169, 169, 169, 0.4);
+  width: auto;
+  max-height: 8vh;
 }
 
 page-test-review #bottom-row {
@@ -22659,12 +22674,30 @@ page-test-review ion-app.ios [margin-right] .scroll-content {
   margin-right: 16px;
 }
 
+page-test-review #thumbnails-row-tr {
+  margin-top: 10px;
+}
+
 page-test-review #testreview-footer {
   border-top: 5px solid grey;
+  max-height: 100px;
+}
+
+page-test-review #correct {
+  color: #61c942;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+page-test-review #incorrect {
+  color: #af0c0c;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 page-test-review .thumbnail-highlight {
-  box-shadow: 5px 5px 5px grey;
+  box-shadow: 3px 3px 5px 4px rgba(169, 169, 169, 0.8);
+  max-height: 13vh;
 }
 
 .ios #fullscreen-flex-td,

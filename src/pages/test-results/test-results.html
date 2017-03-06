@@ -1,23 +1,23 @@
-
 <ion-header>
-    <ion-navbar >
+    <ion-navbar>
         <ion-title align="center"> Test Result </ion-title>
-         <ion-buttons end>
-      <button ion-button (click)="closeTestResult()">
+        <ion-buttons end>
+            <button ion-button (click)="closeTestResult()">
         Close
       </button>
-    </ion-buttons>
+        </ion-buttons>
     </ion-navbar>
     <h2 align="center"> You Scored</h2>
-    <h3 align="center"> {{ correctNum /  testNum * 100 }}% </h3>
+    <h3 align="center"> {{ correctNum / testNum * 100 }}% </h3>
 </ion-header>
 
 
 <ion-content padding>
- 
-     <ion-card>
-       <ion-card-content>
-           <button ion-item class="answers"  detail-push *ngFor="let question of questions; let i = index" (click)="reviewQuestion( question, i)">
+
+    <ion-card>
+        <ion-card-content>
+            <ion-list>
+                <button ion-item class="answers-tr" detail-push *ngFor="let question of questions; let i = index" (click)="reviewQuestion( question, i)">
          <h3 align="center"> Case  {{ i + 1 }} was {{ question.answer }} </h3>
            <p id="chose" align="center"> You chose</p>
           <p align = center *ngIf="question.answer != question.answerGiven"  [ngClass]="'wrong'">
@@ -26,7 +26,8 @@
 	       {{ question.answerGiven  }} </p>
             
          </button>
-      </ion-card-content>
+            </ion-list>
+        </ion-card-content>
     </ion-card>
 
 
