@@ -22201,9 +22201,9 @@ page-login {
   /* Opera < 12.1 */
 }
 
-page-login md .no-scroll .scroll-content {
+page-login .no-scroll .scroll-content {
   overflow: hidden;
-  padding-bottom: 0px;
+  padding: 0px !important;
 }
 
 page-login .login-wrapper {
@@ -22272,14 +22272,10 @@ page-login #test {
   margin-right: auto;
 }
 
-page-login .md .no-scroll .scroll-content {
-  padding-bottom: 0px !important;
-}
-
 page-login #login-logo {
-  margin-top: 5vh;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 40px;
   max-width: 100px;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22305,6 +22301,10 @@ page-login #main-row {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+page-login #login-button {
+  margin-top: 10px;
 }
 
 page-login #bottom-row {

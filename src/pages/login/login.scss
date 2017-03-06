@@ -1,7 +1,18 @@
 page-login {
-    md .no-scroll .scroll-content {
+    // .md .scroll-content {
+    //     overflow: hidden;
+    //     padding-bottom: 0px !important;
+    // }
+    // scroll-content {
+    //     overflow: visible;
+    //     // position: absolute;
+    //     //margin-bottom: 0px;
+    //     padding-bottom: 0px !important;
+    // }
+    //fixes android keyboard scroll
+    .no-scroll .scroll-content {
         overflow: hidden;
-        padding-bottom: 0px;
+        padding: 0px !important;
     }
     .login-wrapper {
         margin-top: 5vh;
@@ -81,16 +92,11 @@ page-login {
         margin-right: auto;
     }
     // keyboard fix
-    .md .no-scroll .scroll-content {
-        // overflow: visible;
-        // position: absolute;
-        //margin-bottom: 0px;
-        padding-bottom: 0px !important;
-    }
     #login-logo {
-        margin-top: 5vh;
+        //margin-top: 5vh;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 40px;
         max-width: 100px;
         display: flex;
         justify-content: center;
@@ -101,6 +107,9 @@ page-login {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+    #login-button {
+        margin-top: 10px;
     }
     #bottom-row {
         flex-direction: column;

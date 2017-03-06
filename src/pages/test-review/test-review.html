@@ -22,49 +22,43 @@
 <ion-content class="no-scroll">
   <h5 margin-top="2px" align="center"> Case {{ currentQuestion + 1 }} of {{ questions.length }} </h5>
   <p id="tap" align="center" margin-left="20px" margin-right="20px"> Tap on Image below to open full screen.</p>
-
   <img id="main-img-tr" (click)="imageZoom()" [src]="viewPic" />
-  <!--<img *ngIf='imageIndex == 1' (click)="imageZoom()" [src]="viewPic"/>-->
-  <!--<img *ngIf='imageIndex == 2' (click)="imageZoom()" [src]="viewPic"/>-->
-  <!--<h3> {{ }} </h3>-->
-
-
-
-
   <ion-grid>
     <ion-row>
-
       <ion-col *ngFor='let photo of photos; let i = index' [ngClass]="{'selected-img-tr': photo.url === viewPic }">
         <img class="thumbnails-tr" (click)="selectImage(photo.url, i)" [src]="photo.url" [ngClass]="{'thumbnail-highlight': photo.url === viewPic }" />
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-row>
+        <p align="center" class="reviewAnswers" margin-left="20px" margin-right="20px"> Case Was {{ answerToShow }} </p>
+      </ion-row>
+      <ion-row>
+        <p align="center" clase="reviewAnswers" margin-left="20px" margin-right="20px"> Your Answer {{ userAnswerToShow }} </p>
+      </ion-row>
+    </ion-row>
   </ion-grid>
-  <p align="center" class="reviewAnswers" margin-left="20px" margin-right="20px"> Case Was {{ answerToShow }} </p>
-  <p align="center" clase="reviewAnswers" margin-left="20px" margin-right="20px"> Your Answer {{ userAnswerToShow }} </p>
-
-
 </ion-content>
+
+
 <ion-footer id="testreview-footer">
   <p id="correct" *ngIf=" answerToShow == userAnswerToShow " align="center" margin-left="20px" margin-right="20px"> Correct!</p>
   <p id="incorrect" *ngIf=" answerToShow !== userAnswerToShow " align="center" margin-left="20px" margin-right="20px"> Incorrect</p>
   <ion-toolbar>
     <ion-grid>
       <ion-row>
-
         <ion-col>
           <ion-buttons *ngIf="currentQuestion !== 0" align="center">
             <ion-icon name="arrow-back"></ion-icon>
             <button ion-button align="center" class="test-button" align="center" outline ion-button color="primary" (click)="nextPage(-1)">Previous</button>
           </ion-buttons>
         </ion-col>
-
         <ion-col>
           <ion-buttons *ngIf=" currentQuestion !== questions.length-1" align="center">
             <button ion-button align="center" class='testbutton' outline ion-button color="primary" (click)="nextPage(1)">Next</button>
             <ion-icon name="arrow-forward"></ion-icon>
           </ion-buttons>
         </ion-col>
-
       </ion-row>
     </ion-grid>
   </ion-toolbar>

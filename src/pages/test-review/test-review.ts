@@ -5,7 +5,8 @@ import { GalleryModal } from 'ionic-gallery-modal';
 import { TestService } from '../../providers/test-service';
 import { UserService } from '../../providers/user-service';
 //Pages
-import { ResultsPage } from '../results/results';
+//import { ResultsPage } from '../results/results';
+import { TabsPage } from '../tabs/tabs';
 
 @Component({
   selector: 'page-test-review',
@@ -87,7 +88,9 @@ export class TestReviewPage {
           text: 'Agree',
           handler: () => {
             console.log('Agree clicked');
-           this.navCtrl.setRoot(ResultsPage);
+           this.navCtrl.setRoot(TabsPage, {
+             "tabIndex": 1
+           });
           }
         }
       ]

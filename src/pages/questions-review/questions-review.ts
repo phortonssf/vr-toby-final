@@ -39,7 +39,7 @@ export class QuestionsReviewPage {
   }
 
   ionViewWillEnter(){
-        gradeAnswers( this.questions, this.answers )
+    gradeAnswers( this.questions, this.answers )
   }
 
   ionViewDidLoad() {

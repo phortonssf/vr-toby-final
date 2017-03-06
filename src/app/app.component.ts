@@ -77,7 +77,7 @@ export class MyApp {
     }
 
     if (page.logsOut === true) {
-        this.logoutConfirm();
+      this.logoutConfirm();
     }
 
   }

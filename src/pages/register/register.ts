@@ -35,10 +35,10 @@ export class RegisterPage {
     if( this.platform.is('core')) {
       this.app._setDisableScroll(true);
     }
-    if( this.platform.is('android')){
-      console.log('Platform = Android');
-      this.app._setDisableScroll(true);
-    }
+    // if( this.platform.is('android')){
+    //   console.log('Platform = Android');
+    //   this.app._setDisableScroll(true);
+    // }
   }
   //Invoked by Register button, registers new user on backend
   registerForm(form) {
