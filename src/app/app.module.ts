@@ -21,7 +21,6 @@ import { TestResultsPage } from '../pages/test-results/test-results';
 import { TestReviewPage } from '../pages/test-review/test-review';
 import { TestViewPage } from '../pages/test-view/test-view';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { TutorialTestPage } from '../pages/tutorial-test/tutorial-test';
 //Services
 import { UserService } from './../providers/user-service';
 import { TestService } from './../providers/test-service';
@@ -43,7 +42,6 @@ const decs = [
   TestResultsPage,
   TestReviewPage,
   TutorialPage,
-  TutorialTestPage,
   ZoomableImage
 ]
 

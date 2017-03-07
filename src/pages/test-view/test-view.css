@@ -1,0 +1,100 @@
+.ios #fullscreen-flex-td,
+.md #fullscreen-flex-td {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start; }
+.ios #content-wrapper-tv,
+.md #content-wrapper-tv {
+  display: block;
+  max-width: 700px;
+  margin: auto; }
+.ios h5,
+.md h5 {
+  color: #4c4c4c; }
+.ios .button,
+.md .button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block; }
+.ios .thumbnails-tv,
+.md .thumbnails-tv {
+  width: auto;
+  max-height: 15vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  border-radius: 6px; }
+.ios .photos-col,
+.md .photos-col {
+  margin-left: auto;
+  margin-right: auto;
+  flex: 1; }
+.ios .selected-img-tv,
+.md .selected-img-tv {
+  flex: 1.3;
+  box-shadow: 4px 4px 4px grey;
+  max-height: 26vh; }
+.ios #main-row-tv,
+.md #main-row-tv {
+  flex-direction: row;
+  flex-wrap: wrap; }
+.ios .select-button-tv,
+.md .select-button-tv {
+  padding: 0px; }
+.ios #main-col-tv,
+.md #main-col-tv {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 95vw;
+  flex: 0 0 100%; }
+.ios #main-img-tv,
+.md #main-img-tv {
+  max-height: 45vh;
+  display: block;
+  margin: auto;
+  border-radius: 5px; }
+.ios #second-col-tv,
+.md #second-col-tv {
+  padding-top: 10px;
+  padding: bottom 10px; }
+.ios #bottom-grid-tv,
+.md #bottom-grid-tv {
+  padding-top: 0px; }
+.ios #answer-row-tv,
+.md #answer-row-tv {
+  flex-direction: row;
+  display: flex;
+  align-items: flex-end;
+  -webkit-align-items: flex-end; }
+.ios .button,
+.md .button {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-size: 1.2rem; }
+.ios .photos-col-tv,
+.md .photos-col-tv {
+  width: 30vw;
+  border-radius: 5px;
+  max-height: 23vh; }
+.ios .answer-button-col,
+.md .answer-button-col {
+  width: 30vw; }
+.ios .answer-button-tv,
+.md .answer-button-tv {
+  min-height: 44px;
+  max-height: 60px; }
+.ios ion-col,
+.md ion-col {
+  width: 100%; }
+.ios #bottom-toolbar-tv,
+.md #bottom-toolbar-tv {
+  min-height: 0px;
+  font-size: 1.5rem; }
+.ios .toolbar-title,
+.md .toolbar-title {
+  font-size: 1.5rem; }
+
+/*# sourceMappingURL=test-view.css.map */

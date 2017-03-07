@@ -51,12 +51,15 @@ export class TestReviewPage {
  
  //Select image to View
   selectImage(img, i) {
+    console.log("i am i", img)
     this.viewPic = img;
     this.imageIndex = i;
   }
 
   //Creates Modal on click of the main image.
-  imageZoom() {
+  imageZoom(i) {
+    this.imageIndex = i;
+    console.log("hellos i", i)
     let modal = this.modal.create(GalleryModal, {
     photos: this.photos,
     initialSlide: this.imageIndex

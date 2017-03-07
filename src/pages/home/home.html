@@ -34,7 +34,7 @@
         <ion-list>
           <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
             <ion-thumbnail>
-              <img src="assets/img/homeIcon-1.png" [navPush]="pushPage">
+              <img src="assets/img/homeIcon-1.png">
             </ion-thumbnail>
             <h2>Level {{$index + 1}}</h2>
             <h3>{{test.title}}</h3>
@@ -46,7 +46,7 @@
         <ion-list style=" opacity: .3;">
           <ion-item *ngFor="let test of tests; let $index = index;" no-lines>
             <ion-thumbnail>
-              <img src="assets/img/homeIcon-1.png" [navPush]="pushPage">
+              <img src="assets/img/homeIcon-1.png">
             </ion-thumbnail>
             <h2>Level {{$index + 1}}</h2>
             <h3>{{test.title}}</h3>

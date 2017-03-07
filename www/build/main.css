@@ -22643,7 +22643,7 @@ page-test-review #main-img-tr {
   max-height: 50vh;
   margin-right: auto;
   margin-left: auto;
-  box-shadow: 3px 3px 5px 5px rgba(169, 169, 169, 0.4);
+  box-shadow: 4px 4px 5px 3px #424242;
 }
 
 page-test-review .thumbnails-tr {
@@ -22736,12 +22736,12 @@ page-test-review .thumbnail-highlight {
 .ios .thumbnails-tv,
 .md .thumbnails-tv {
   width: auto;
-  max-height: 25vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
   border-radius: 6px;
+  max-height: 15vh;
 }
 
 .ios .photos-col,
@@ -22755,10 +22755,16 @@ page-test-review .thumbnail-highlight {
 
 .ios .selected-img-tv,
 .md .selected-img-tv {
-  -webkit-flex: 1.3;
-  -ms-flex: 1.3;
-  flex: 1.3;
-  box-shadow: 4px 4px 4px grey;
+  -webkit-flex: 1.2;
+  -ms-flex: 1.2;
+  flex: 1.2;
+  box-shadow: 0px 2px 2px 1px rgba(105, 105, 105, 0.6);
+  max-height: 30vh;
+}
+
+.ios .selected-img-thumbnail,
+.md .selected-img-thumbnail {
+  max-height: 19vh;
 }
 
 .ios #main-row-tv,
@@ -22771,9 +22777,10 @@ page-test-review .thumbnail-highlight {
   flex-wrap: wrap;
 }
 
-.ios .select-button-tv,
-.md .select-button-tv {
+.ios .grade-button,
+.md .grade-button {
   padding: 0px;
+  box-shadow: 2px 2px 2px 2px #5a5a5a;
 }
 
 .ios #main-col-tv,
@@ -22792,20 +22799,32 @@ page-test-review .thumbnail-highlight {
   display: block;
   margin: auto;
   border-radius: 5px;
+  box-shadow: 4px 4px 5px 3px #424242;
 }
 
 .ios #second-col-tv,
 .md #second-col-tv {
   padding-top: 10px;
-  padding: bottom 10px;
+  padding-bottom: 10px;
+}
+
+.ios #bottom-grid-tv,
+.md #bottom-grid-tv {
+  padding: 0px;
+  height: 55px;
 }
 
 .ios #answer-row-tv,
 .md #answer-row-tv {
-  margin-top: 1vh;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
 }
 
 .ios .button,
@@ -22820,6 +22839,7 @@ page-test-review .thumbnail-highlight {
 .md .photos-col-tv {
   width: 30vw;
   border-radius: 5px;
+  max-height: 26vh;
 }
 
 .ios .answer-button-col,
@@ -22830,12 +22850,38 @@ page-test-review .thumbnail-highlight {
 .ios .answer-button-tv,
 .md .answer-button-tv {
   min-height: 44px;
-  max-height: 60px;
+  max-height: 50px;
 }
 
 .ios ion-col,
 .md ion-col {
   width: 100%;
+}
+
+.ios ion-footer,
+.md ion-footer {
+  height: 95px;
+}
+
+.ios #bottom-toolbar-tv,
+.md #bottom-toolbar-tv {
+  font-size: 1.5rem;
+  height: 40px;
+  padding: 0px;
+  padding-top: 2px;
+}
+
+.ios .toolbar-title,
+.md .toolbar-title {
+  font-size: 1.5rem;
+  min-height: 25px;
+  margin-top: 2px;
+}
+
+.ios .toolbar-ios,
+.md .toolbar-ios {
+  padding: 4px;
+  min-height: 30px;
 }
 
 .ios page-tutorial h2,
@@ -22923,180 +22969,5 @@ page-test-review .thumbnail-highlight {
   .ios page-tutorial p b,
   .md page-tutorial p b {
     color: #000000;
-  }
-}
-
-.ios page-tutorial-test .container, .md page-tutorial-test .container {
-  max-width: 100%;
-  max-height: auto;
-  background-color: #000;
-  opacity: 0.5;
-}
-
-.ios page-tutorial-test .no-scroll .scroll-content, .md page-tutorial-test .no-scroll .scroll-content {
-  overflow: hidden;
-  margin-top: 3vh !important;
-}
-
-.ios page-tutorial-test .view-wrapper, .md page-tutorial-test .view-wrapper {
-  max-height: 100vh;
-  max-width: 100vw;
-  margin-bottom: 1vh;
-}
-
-.ios page-tutorial-test h5, .md page-tutorial-test h5 {
-  color: #4c4c4c;
-}
-
-.ios page-tutorial-test .button, .md page-tutorial-test .button {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.ios page-tutorial-test #bar, .md page-tutorial-test #bar {
-  max-height: 30px;
-  margin-bottom: 2vh;
-}
-
-.ios page-tutorial-test img.thumbnails, .md page-tutorial-test img.thumbnails {
-  width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ios page-tutorial-test #test-row, .md page-tutorial-test #test-row {
-  margin-top: 2vh;
-}
-
-.ios page-tutorial-test .photos-col, .md page-tutorial-test .photos-col {
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-
-.ios page-tutorial-test #main-img, .md page-tutorial-test #main-img {
-  width: 100%;
-  display: block;
-  margin: auto;
-}
-
-@media screen and (min-width: 320px) and (max-width: 500px) {
-  .ios page-tutorial-test .view-wrapper, .md page-tutorial-test .view-wrapper {
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    max-width: 100vw;
-    max-height: 100vh;
-  }
-  .ios page-tutorial-test .photos-col, .md page-tutorial-test .photos-col {
-    max-width: 25vw;
-  }
-  .ios page-tutorial-test #main-img, .md page-tutorial-test #main-img {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-  .ios page-tutorial-test img.thumbnail, .md page-tutorial-test img.thumbnail {
-    max-width: 90px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .ios page-tutorial-test .photos-col, .md page-tutorial-test .photos-col {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-  }
-  .ios page-tutorial-test .inner-pic-row, .md page-tutorial-test .inner-pic-row {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    max-width: 80vw;
-  }
-  .ios page-tutorial-test #test-row, .md page-tutorial-test #test-row {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-  .ios page-tutorial-test #thumbnails-row, .md page-tutorial-test #thumbnails-row {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-  .ios page-tutorial-test #answer-row, .md page-tutorial-test #answer-row {
-    margin-top: 1vh;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    border: 1px solid #4c4c4c;
-    border-radius: 5px;
-  }
-  .ios page-tutorial-test .button-row, .md page-tutorial-test .button-row {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
-@media screen and (min-width: 700px) {
-  .ios page-tutorial-test #main-col, .md page-tutorial-test #main-col {
-    -webkit-flex: 7;
-    -ms-flex: 7;
-    flex: 7;
-    -webkit-flex-grow: 2;
-    -ms-flex-positive: 2;
-    flex-grow: 2;
-  }
-  .ios page-tutorial-test #right-col, .md page-tutorial-test #right-col {
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-  }
-  .ios page-tutorial-test .view-wrapper, .md page-tutorial-test .view-wrapper {
-    -webkit-justify-content: start;
-    -ms-flex-pack: start;
-    justify-content: start;
-    margin-top: 5vh;
-    max-width: 900px;
-  }
-  .ios page-tutorial-test #main-img, .md page-tutorial-test #main-img {
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-  .ios page-tutorial-test #test-row, .md page-tutorial-test #test-row {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-  .ios page-tutorial-test #thumbnails-row, .md page-tutorial-test #thumbnails-row {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-  .ios page-tutorial-test #answer-row, .md page-tutorial-test #answer-row {
-    margin-top: 5vh;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    border: 1px solid #4c4c4c;
-    border-radius: 5px;
-  }
-  .ios page-tutorial-test .thumbnail, .md page-tutorial-test .thumbnail {
-    max-width: 10vw;
-  }
-  .ios page-tutorial-test .inner-pic-row, .md page-tutorial-test .inner-pic-row {
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-  }
-  .ios page-tutorial-test #button-row, .md page-tutorial-test #button-row {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
   }
 }

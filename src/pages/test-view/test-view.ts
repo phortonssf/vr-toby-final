@@ -168,11 +168,21 @@ export class TestViewPage {
     this.currentImg = img;
     console.log("hello img", img)
     this.imageIndex = i;
+    console.log(this.imageIndex);
   }
 
-  //Creates Modal on click of the main image.
+  //Creates Modal on click of the zoom icon.
   imageZoom(index) {
     this.imageIndex = index;
+    let modal = this.modal.create(GalleryModal, {
+      photos: this.photos,
+      initialSlide: this.imageIndex
+    });
+    modal.present();
+  }
+  
+  //Creates Modal on click of the main image.
+  mainZoom() {
     let modal = this.modal.create(GalleryModal, {
       photos: this.photos,
       initialSlide: this.imageIndex
