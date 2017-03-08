@@ -66,9 +66,7 @@ export class TestViewPage {
     this.checkViewPortait();
   }
   
-  ionViewDidEnter(){
-   // this.app._setDisableScroll(true);
-  }
+ 
   
   checkPlatform(){
    console.log("hello", this.platform.is('core'))

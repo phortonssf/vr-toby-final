@@ -15,7 +15,7 @@
     <ion-card>
         <ion-card-content>
             <button ion-item class="answers" detail-push *ngFor="let question of questions; let i = index" (click)="reviewQuestion(question, i)">
-            <h3 align="center"> Case  {{ i + 1 }} was {{ question.answer }}</h3>
+            <h3 align="center"> Question  {{ i + 1 }} {{ question.answer }}</h3>
             <p id="chose" align="center">You chose</p>
             <p align = center *ngIf="question.answer != question.answerGiven" [ngClass]="'wrong'">
             {{ question.answerGiven  }} </p>

@@ -54,7 +54,7 @@ export class HomePage {
         })
       }
     }, err => {
-      //this.errorAlertAlert();
+      this.loginAlert();
     }
   );
 
@@ -63,7 +63,7 @@ export class HomePage {
       .map(res => res.json())
       .subscribe(res => {
         this.tests = res;
-        console.log(this.tests);
+        console.log( "tests", this.tests);
       }, err => {
         this.loginAlert();
       })
@@ -114,6 +114,8 @@ console.log(clickedTest.answerChoices);
         for (var i = 0; i < length; i++){
           clickedTest.questionIds[i].imgArray = clickedTest.questionIds[i].imageIds.split(",")
         }
+        
+        // TODO?: fetched images then ran the rest of the ...getRootNav()... - John
         this.app.getRootNav().setRoot(TestViewPage,{
           "testId": clickedTest.id,
           "testTakenId": res.id,

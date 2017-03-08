@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title id="home-title" align="center">
-      Home
+      VR Toby
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -34,7 +34,7 @@
         <ion-list>
           <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
             <ion-thumbnail>
-              <img src="assets/img/homeIcon-1.png">
+              <img src=test.icon>
             </ion-thumbnail>
             <h2>Level {{$index + 1}}</h2>
             <h3>{{test.title}}</h3>
@@ -46,7 +46,7 @@
         <ion-list style=" opacity: .3;">
           <ion-item *ngFor="let test of tests; let $index = index;" no-lines>
             <ion-thumbnail>
-              <img src="assets/img/homeIcon-1.png">
+              <img src=test.icon>
             </ion-thumbnail>
             <h2>Level {{$index + 1}}</h2>
             <h3>{{test.title}}</h3>
