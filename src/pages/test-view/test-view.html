@@ -19,7 +19,7 @@
             <img id="main-img-tv" class="bounceInLeft" (click)="mainZoom()" [src]="viewPic" />
           </ion-col>
           <ion-col id="second-col-tv">
-            <ion-row id="thumbnail-row-tv">
+            <ion-row id="thumbnail-row-tv" *ngIf="photos.length > 1">
               <ion-col class="photos-col-tv" *ngFor='let photo of photos; let i = index' [ngClass]="{'selected-img-tv': photo.url === viewPic }">
                 <button class="grade-button" ion-button block small color="light" *ngIf="photos.length == 2 && i == 0" (click)="presentActionSheet(i)">{{heart[i]}}</button>
                 <button class="grade-button" ion-button block small color="light" *ngIf="photos.length == 2 && i == 1" (click)="presentActionSheet(i)">{{heart[i]}}</button>
