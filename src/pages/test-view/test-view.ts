@@ -23,7 +23,7 @@ export class TestViewPage {
   questions: any[] = [];
   currentQuestion: number = 0;
   test: any;
-  loadProgress: number;
+  loadProgress: any;
   answers: any[] = [];
   viewPic: string;
   imageIndex: any = 0;
@@ -58,8 +58,9 @@ export class TestViewPage {
     //gets photos
     this.createPhotos(this.questions[this.currentQuestion].imgArray);
     console.log("this.testId", this.testId)
+    
     if(this.questions.length > 0) {
-      this.loadProgress = 100 * this.currentQuestion  / this.questions.length;
+      this.loadProgress = Math.floor(100 * this.currentQuestion  / this.questions.length);
     }
     this.checkViewLandscape();
     this.checkViewPortait();
