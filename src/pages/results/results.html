@@ -12,7 +12,7 @@
 
 <ion-content>
   <img [hidden]="!showResults" src="assets/img/no-data.gif" />
-  <h4 align="center" [hidden]="showResults" color="dark">Click On A Item To Review</h4>
+  <h4 align="center" [hidden]="showResults" color="dark">Click On An Item To Review</h4>
   <ion-list [hidden]="showResults">
     <ion-item *ngFor=" let test of completedTests" (click)="reviewTest(test)">
       <h5>Date: {{test.createDate | date:"MM/dd/yyyy"}}</h5>
