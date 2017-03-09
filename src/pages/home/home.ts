@@ -146,7 +146,8 @@ console.log(userTest)
     "currentQuestion": test.answers.length,
     "answers": test.answers,
     "testTitle": test.title,
-    "answerChoices": test.answerChoices
+    "answerChoices": test.answerChoices,
+    "purpose": test.purpose
       })
   }
 
