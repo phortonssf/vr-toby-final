@@ -13,6 +13,7 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class TestResultsPage {
   answers: any[] = [];
+  answerChoices: any;
   questions: any[] = [];
   correctNum: number = 0;
   totalQuestions: number = undefined;
@@ -34,10 +35,10 @@ export class TestResultsPage {
     this.questions = this.navParams.get("questions");
     this.testTakenId =  this.navParams.get("testTakenId");
     this.testId = this.navParams.get("testId");
+    this.answerChoices = this.navParams.get("answerChoices");
     this.totalQuestions = this.questions.length;
     this.userToken = window.localStorage.getItem('userToken');
     this.userId = window.localStorage.getItem('userId');
-    
     //Compares user answers to the answers of the question
     for(var i = 0; i < this.totalQuestions; i++) {
     this.questions[i].answerGiven = this.answers[i]
@@ -68,7 +69,6 @@ export class TestResultsPage {
       alert("Error this is completeTest error")
       console.log(err)
     })
-
   }
 
   closeTestResult(){
