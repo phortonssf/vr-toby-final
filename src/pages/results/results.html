@@ -17,7 +17,7 @@
     <ion-item *ngFor=" let test of completedTests" (click)="reviewTest(test)">
       <h5>Date: {{test.createDate | date:"MM/dd/yyyy"}}</h5>
       <h5>Class: {{test.title}} </h5>
-      <progress-bar [progress]="test.loadProgress"></progress-bar>
+      <progress-bar *ngIf="test.purpose == 'quiz' " [progress]="test.loadProgress"></progress-bar>
     </ion-item>
   </ion-list>
 </ion-content>
