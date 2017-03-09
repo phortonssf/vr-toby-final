@@ -7,8 +7,8 @@
       </button>
         </ion-buttons>
     </ion-navbar>
-    <h2 align="center"> You Scored</h2>
-    <h3 align="center"> {{ correctNum / testNum * 100 }}% </h3>
+    <h2 align="center" *ngIf="purpose ==  'quiz' "> You Scored</h2>
+    <h3 align="center " *ngIf="purpose== 'quiz' "> {{ correctNum / testNum * 100 }}% </h3>
 </ion-header>
 
 
@@ -19,9 +19,10 @@
             <ion-list>
                 <button ion-item class="answers-tr" detail-push *ngFor="let question of questions; let i = index" (click)="reviewQuestion( question, i)">
                     <h3 align="center"> Question  {{ i + 1 }}  {{ question.answer }} </h3>
-                    <p id="chose" align="center"> You chose</p>
-                    <p align = center>
-                    {{ question.answerGiven  }} </p>
+                    <p id="chose" align="center">You chose</p>                    
+                    <p align = center  *ngIf="purpose== 'data' ">{{ question.answerGiven }}</p>
+
+                    <p align = center *ngIf="purpose== 'quiz' "[ngClass]="question.answer == question.answerGiven ? 'right' : 'wrong'">{{ question.answerGiven }}</p>
                 </button>
             </ion-list>
         </ion-card-content>

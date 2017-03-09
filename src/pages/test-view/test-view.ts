@@ -23,6 +23,7 @@ export class TestViewPage {
   questions: any[] = [];
   currentQuestion: number = 0;
   test: any;
+  purpose: string = "";
   loadProgress: any;
   answers: any[] = [];
   viewPic: string;
@@ -46,13 +47,14 @@ export class TestViewPage {
 
     //Get data from params pass from previous page with navCtrl
     this.testId =  this.navParams.get("testId");
+    this.purpose = this.navParams.get("purpose");
     this.testTakenId = this.navParams.get("testTakenId");
     this.questions = this.navParams.get("questions");
     this.testTitle = this.navParams.get("testTitle");
     this.currentQuestion = this.navParams.get("currentQuestion");
     this.answers = this.navParams.get("answers");
     this.answerChoices = this.navParams.get("answerChoices");
-    console.log(this.answerChoices);
+    console.log(this.purpose);
     //Local staorage
     this.userToken = window.localStorage.getItem('userToken');
     //gets photos
@@ -255,7 +257,7 @@ export class TestViewPage {
     })
     .subscribe( res => {
       console.log("hellos", this.testId)
-      nextQuestion(this.testId, this.testTitle, this.navCtrl, this.currentQuestion, this.questions, this.testTakenId, this.answers, this.answerChoices)
+      nextQuestion(this.testId, this.testTitle, this.navCtrl, this.currentQuestion, this.questions, this.testTakenId, this.answers, this.answerChoices, this.purpose)
     }, err => {
         alert("Error Server Could Not Be Found. Try again Later.")
         console.log(err)
@@ -266,15 +268,17 @@ export class TestViewPage {
 }
 
 //handles what data to send to the next question if last question goes to TestResultsPage
-let nextQuestion = function(testid, title, nav, pageNum, question, takenId, answer, answerChoices){
+let nextQuestion = function(testid, title, nav, pageNum, question, takenId, answer, answerChoices, purpose){
     if( pageNum === question.length-1){
+      console.log(purpose);
       nav.setRoot(TestResultsPage,
         { 
           "testId": testid,
           "answers": answer,
           "questions": question,
           "testTakenId": takenId,
-          "testTitle": title
+          "testTitle": title,
+          "purpose": purpose
         })
         //Go to nexst question with the data given in navCtrl
     }else{
@@ -286,7 +290,8 @@ let nextQuestion = function(testid, title, nav, pageNum, question, takenId, answ
         "testTakenId": takenId,
         "answers": answer,
         "testTitle": title,
-        "answerChoices": answerChoices
+        "answerChoices": answerChoices,
+        "purpose": purpose
       })
     }
   }

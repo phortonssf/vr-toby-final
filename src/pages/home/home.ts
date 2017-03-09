@@ -124,7 +124,8 @@ console.log(userTest)
           "currentQuestion": 0,
           "answers": [],
           "testTitle": clickedTest.title,
-          "answerChoices": clickedTest.answerChoices
+          "answerChoices": clickedTest.answerChoices,
+          "purpose": clickedTest.purpose
         });
       }, err => {
         alert("Something went really wrong.");

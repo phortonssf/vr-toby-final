@@ -23,7 +23,8 @@ export class TestResultsPage {
   userToken: string = "";
   userId: string = "";
   testTitle: string = "";
-  testId: string = ""
+  testId: string = "";
+  purpose: string = "";
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public userService: UserService, public testService: TestService,
@@ -31,6 +32,7 @@ export class TestResultsPage {
   {
     //Get data passed from previous page with navParams
     this.answers = this.navParams.get("answers");
+    this.purpose = this.navParams.get("purpose");
     this.testTitle = this.navParams.get("testTitle");
     this.questions = this.navParams.get("questions");
     this.testTakenId =  this.navParams.get("testTakenId");
@@ -69,6 +71,7 @@ export class TestResultsPage {
       alert("Error this is completeTest error")
       console.log(err)
     })
+    console.log("purpose", this.purpose)
   }
 
   closeTestResult(){
