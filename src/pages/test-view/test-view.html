@@ -21,11 +21,11 @@
           <ion-col id="second-col-tv">
             <ion-row id="thumbnail-row-tv" *ngIf="photos.length > 1">
               <ion-col class="photos-col-tv" *ngFor='let photo of photos; let i = index' [ngClass]="{'selected-img-tv': photo.url === viewPic }">
-                <button class="grade-button" ion-button block small color="light" *ngIf="photos.length == 2 && i == 0" (click)="presentActionSheet(i)">{{heart[i]}}</button>
-                <button class="grade-button" ion-button block small color="light" *ngIf="photos.length == 2 && i == 1" (click)="presentActionSheet(i)">{{heart[i]}}</button>
-                <button class="grade-button" ion-button block small color="light" *ngIf="photos.length > 2 && i == 0" (click)="presentActionSheet(i)">{{heart[i]}}</button>
-                <button class="grade-button" ion-button block small color="light" *ngIf="photos.length > 2 && i == 1" (click)="presentActionSheet(i)">{{heart[i]}}</button>
-                <button class="grade-button" ion-button block small color="light" *ngIf="photos.length > 2 && i == 2" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+                <button class="grade-button" [ngClass]="{'selected-img-button': photo.url === viewPic }" ion-button block small color="light" *ngIf="photos.length == 2 && i == 0" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+                <button class="grade-button" [ngClass]="{'selected-img-button': photo.url === viewPic }" ion-button block small color="light" *ngIf="photos.length == 2 && i == 1" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+                <button class="grade-button" [ngClass]="{'selected-img-button': photo.url === viewPic }" ion-button block small color="light" *ngIf="photos.length > 2 && i == 0" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+                <button class="grade-button" [ngClass]="{'selected-img-button': photo.url === viewPic }" ion-button block small color="light" *ngIf="photos.length > 2 && i == 1" (click)="presentActionSheet(i)">{{heart[i]}}</button>
+                <button class="grade-button" [ngClass]="{'selected-img-button': photo.url === viewPic }" ion-button block small color="light" *ngIf="photos.length > 2 && i == 2" (click)="presentActionSheet(i)">{{heart[i]}}</button>
                 <img class="thumbnails-tv" (click)="selectImage(photo.url, i)" [src]="photo.url" [ngClass]="{'selected-img-thumbnail': photo.url === viewPic }" />
                 <button ion-button clear color="dark" (click)="imageZoom(i)">{{zoom}}</button>
               </ion-col>

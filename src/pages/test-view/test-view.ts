@@ -86,15 +86,15 @@ export class TestViewPage {
     /*/
     
       //Actionsheet for image grade
-  presentActionSheet() {
+  presentActionSheet(i) {
     let bleh = this;
           let actionAnswerButtons = []
     this.answerChoices.forEach(function(answer, index) {
       actionAnswerButtons.push(
         { text: answer,
           handler: () => {
-            bleh.heart[index] = answer;
-            console.log("clicked", answer)
+            bleh.heart[i] = answer;
+            console.log("clicked", index)
           }
           
         }
@@ -261,11 +261,12 @@ export class TestViewPage {
         console.log(err)
     })
   }
+  
+  
 }
 
 //handles what data to send to the next question if last question goes to TestResultsPage
 let nextQuestion = function(testid, title, nav, pageNum, question, takenId, answer, answerChoices){
-    //if last question go to TestResultsPage
     if( pageNum === question.length-1){
       nav.setRoot(TestResultsPage,
         { 
