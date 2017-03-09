@@ -63,7 +63,7 @@ export class HomePage {
       .map(res => res.json())
       .subscribe(res => {
         this.tests = res;
-        console.log( "tests", this.tests);
+        console.log( "tests", this.tests[0].icon);
       }, err => {
         this.loginAlert();
       })
@@ -88,7 +88,7 @@ export class HomePage {
   test taken record on backend that the user owns*/
   takeTest(clickedTest){
     let todaysDate = new Date()
-console.log(clickedTest.answerChoices);
+console.log(clickedTest);
     let userTest = {
       "userId": this.userId,
       "testId": clickedTest.id,
@@ -96,9 +96,10 @@ console.log(clickedTest.answerChoices);
       "totalCorrect": 99999,
       "totalCount":  clickedTest.questionIds.length,
       "title": clickedTest.title,
-      "answerChoices": clickedTest.answerChoices
+      "answerChoices": clickedTest.answerChoices,
+      "purpose": clickedTest.purpose
      }
-
+console.log(userTest)
     this.testService.createUserTest( userTest , this.userToken )
       .map(res => {
     // If request fails, throw an Error that will be caught
