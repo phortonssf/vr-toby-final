@@ -18,6 +18,7 @@ export class QuestionsReviewPage {
   userToken: string = "";
   userId: string = "";
   testTitle: string = "";
+  purpose: string = "";
 
   constructor(
     public navCtrl: NavController,
@@ -27,6 +28,7 @@ export class QuestionsReviewPage {
   )
   {
     // this.config.swipeBackEnabled = false;
+    this.purpose = this.navParams.get("purpose");
     this.answers = this.navParams.get("answers");
     this.testTitle = this.navParams.get("testTitle");
     this.questions = this.navParams.get("questions");
@@ -39,6 +41,7 @@ export class QuestionsReviewPage {
 
   ionViewWillEnter(){
     gradeAnswers( this.questions, this.answers )
+    console.log(this.purpose)
   }
 
   ionViewDidLoad() {

@@ -6,7 +6,7 @@
 
         </ion-buttons>
     </ion-navbar>
-    <h4 align="center"> Scored {{ totalCorrect / totalQuestions * 100}}% </h4>
+    <h4 *ngIf="purpose == quiz" align="center"> Scored {{ totalCorrect / totalQuestions * 100}}% </h4>
 </ion-header>
 
 
