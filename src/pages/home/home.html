@@ -30,9 +30,9 @@
         </ion-list>
       </ion-col>
 
-      <ion-col *ngIf=" numOfUnfinishedTests == undefined">
+      <ion-col>
         <ion-list>
-          <ion-item *ngFor="let test of tests; let $index = index;" (click)="takeTest(test)" no-lines>
+          <ion-item *ngFor="let test of tests; let $index = index;" [ngClass]="{'drop-opacity': test.testTakenIds.length > 0}" (click)="(numOfUnfinishedTests && finishTest()) || (test.testTakenIds.length > 0 && confirmRestart(test)) || takeTest(test)" no-lines>
             <ion-thumbnail>
               <img [src]=test.icon>
             </ion-thumbnail>
@@ -42,17 +42,6 @@
         </ion-list>
       </ion-col>
 
-      <ion-col *ngIf=" numOfUnfinishedTests > 0 ">
-        <ion-list style=" opacity: .3;">
-          <ion-item *ngFor="let test of tests; let $index = index;" no-lines>
-            <ion-thumbnail>
-              <img [src]=test.icon>
-            </ion-thumbnail>
-            <h2>Level {{$index + 1}}</h2>
-            <h3>{{test.title}}</h3>
-          </ion-item>
-        </ion-list>
-      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

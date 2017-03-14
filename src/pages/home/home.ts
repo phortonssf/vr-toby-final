@@ -59,17 +59,13 @@ export class HomePage {
   );
 
     //Gets all tests
-    this.testService.getTests(this.userToken )
-      .map(res => res.json())
-      .subscribe(res => {
-        this.tests = res;
-        console.log( "tests", this.tests[0].icon);
-      }, err => {
-        this.loginAlert();
-      })
-  
-
-    
+  this.testService.getTests(this.userId, this.userToken )
+    .map(res => res.json())
+    .subscribe(res => {
+      this.tests = res;
+    }, err => {
+      this.loginAlert();
+    })
   };
   
    
@@ -188,15 +184,43 @@ console.log(userTest)
         return res.json();
         }
     })
-      .subscribe ( res => {
+    .subscribe ( res => {
+      window.localStorage.clear();
+      this.app.getRootNav().setRoot(LoginPage);
+      },
+      err => {
         window.localStorage.clear();
         this.app.getRootNav().setRoot(LoginPage);
-        },
-        err => {
-          window.localStorage.clear();
-          this.app.getRootNav().setRoot(LoginPage);
-        }
-      )
+      }
+    )
   }
-
+  finishTest() {
+    let alert = this.alertCtrl.create({
+      title: 'Hold Up',
+      subTitle: "Please finish the above started test before starting a new one.",
+      buttons: ['Dismiss']
+    });
+    alert.present();
+    return true;
+  }
+    
+  confirmRestart(test) {
+    let alert = this.alertCtrl.create({
+      title: 'Heads Up!',
+      message: "You have already finished this, are you sure you want to restart it?",
+      buttons: [{
+        text: 'Dismiss',
+        role: 'cancel',
+        handler: () => {
+        }
+      }, {
+        text: 'Restart',
+        role: 'cancel',
+        handler: () => {
+          this.takeTest(test);
+        }
+      }]
+    });
+    return alert.present();
+  }
 }

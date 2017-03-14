@@ -13,10 +13,11 @@ export class TestService {
   }
 
   // Gets all test from our server
-  getTests(token){
-    return this.http.get(this.baseUrl + "Tests?" +
-    "filter[include]=questionIds" + "&access_token=" +
-    token ,  true)
+  
+  getTests( userId, token){
+    return this.http.get(this.baseUrl + 
+    `Tests?filter={"include":[{"relation":"testTakenIds","scope":{"where":{"or":[{"imageIds":{"exists":true}},{"userId":"${userId}"}]}}},{"relation":"questionIds"}]}&access_token=${token}`,
+    true)
   }
   
   // Gets specific test by id
