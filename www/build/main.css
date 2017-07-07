@@ -21372,6 +21372,10 @@ page-home .test-row {
   }
 }
 
+page-home .drop-opacity {
+  opacity: 0.25;
+}
+
 page-login {
   /* Firefox < 16 */
   /* Safari, Chrome and Opera > 12.1 */
