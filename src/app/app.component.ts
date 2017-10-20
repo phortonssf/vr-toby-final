@@ -39,7 +39,7 @@ export class MyApp {
   ];
   
 
-  rootPage: any;
+  rootPage = LoginPage ;
 
   constructor(
     public events: Events,
@@ -51,12 +51,12 @@ export class MyApp {
   {
 
     // Check if the user has already seen the tutorial
-    if(window.localStorage.getItem('hasSeenTutorial')) {
-      this.rootPage = window.localStorage.getItem('userToken') ? TabsPage : LoginPage;
-    }
-    else {
-      this.rootPage = TutorialPage;
-    }
+    // if(window.localStorage.getItem('hasSeenTutorial')) {
+    //   this.rootPage = window.localStorage.getItem('userToken') ? TabsPage : LoginPage;
+    // }
+    // else {
+    //   this.rootPage = TutorialPage;
+    // }
     platform.ready().then(() => {
       Splashscreen.hide();
     });
